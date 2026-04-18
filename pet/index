@@ -1,0 +1,1547 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>PET 备考 · Cambridge B1 Preliminary · 单词卡</title>
+<meta name="theme-color" content="#1e3a2f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="PET单词">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  /* 英伦学院风：深墨绿 + 酒红 + 羊皮纸米白 + 金色 */
+  --ink:#1e3a2f;         /* 深墨绿（主色，如学院徽章） */
+  --ink-2:#2a4d3e;       /* 墨绿浅一档 */
+  --wine:#8b2635;        /* 酒红（强调色，如丝带、重点） */
+  --wine-2:#a63446;
+  --gold:#c9a961;        /* 金色（装饰描边、烫金文字） */
+  --gold-2:#b89048;
+  --parchment:#f4ecd8;   /* 羊皮纸底色 */
+  --parchment-2:#ede3c8; /* 羊皮纸深一档 */
+  --cream:#faf6ea;       /* 奶油卡片底 */
+  --text:#2a2218;        /* 主文字：深棕黑 */
+  --text-2:#5c4f3a;      /* 副文字：暖棕 */
+  --text-3:#8a7a5f;      /* 弱文字 */
+  --border:#d4c59a;      /* 描边 */
+  --border-2:#bfa872;
+  --shadow-soft:0 4px 12px rgba(42,34,24,0.08);
+  --shadow-card:0 6px 20px rgba(42,34,24,0.12),0 2px 4px rgba(42,34,24,0.06);
+  --shadow-hero:0 10px 28px rgba(30,58,47,0.18);
+  --radius:14px;
+  --radius-lg:18px;
+}
+html{height:100%}
+body{
+  font-family:'Lora','Georgia',serif;
+  background:var(--parchment);color:var(--text);min-height:100vh;
+  padding-top:env(safe-area-inset-top);
+  padding-bottom:calc(80px + env(safe-area-inset-bottom));
+  /* 羊皮纸纹理：极淡的颗粒感 */
+  background-image:
+    radial-gradient(circle at 20% 10%,rgba(201,169,97,0.06) 0%,transparent 40%),
+    radial-gradient(circle at 80% 80%,rgba(139,38,53,0.04) 0%,transparent 40%),
+    repeating-linear-gradient(0deg,rgba(42,34,24,0.015) 0px,rgba(42,34,24,0.015) 1px,transparent 1px,transparent 3px);
+}
+#wrap{max-width:480px;margin:0 auto;min-height:100vh;position:relative}
+
+/* ── 顶部徽章栏 ── */
+.hbar{
+  position:sticky;top:0;z-index:1000;
+  background:linear-gradient(180deg,var(--ink) 0%,var(--ink-2) 100%);
+  border-bottom:3px solid var(--gold);
+  box-shadow:0 2px 10px rgba(30,58,47,0.25);
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  padding:14px 16px 12px;
+  position:relative;
+}
+.hbar::after{
+  /* 金色装饰线 */
+  content:'';position:absolute;bottom:-6px;left:0;right:0;height:1px;
+  background:var(--gold-2);opacity:0.6;
+}
+.hbar-crest{
+  font-family:'Playfair Display',serif;
+  font-size:11px;color:var(--gold);letter-spacing:4px;
+  font-weight:900;text-transform:uppercase;
+}
+.hbar-title{
+  font-family:'Playfair Display',serif;
+  font-size:17px;font-weight:900;color:var(--parchment);
+  letter-spacing:1.5px;
+}
+.hbar-divider{
+  color:var(--gold);font-size:10px;opacity:0.7;
+}
+
+/* ── 滚动区 ── */
+.scroll-content{padding:0 16px}
+
+/* ── HERO 徽章卡 ── */
+.hero-card{
+  background:var(--cream);
+  border:2px solid var(--ink);
+  border-radius:var(--radius-lg);
+  padding:20px 20px 0;
+  margin:18px 0 24px;
+  position:relative;
+  overflow:visible;
+  min-height:140px;
+  box-shadow:var(--shadow-hero);
+}
+.hero-card::before{
+  /* 内描金边 */
+  content:'';position:absolute;inset:4px;
+  border:1px solid var(--gold);
+  border-radius:calc(var(--radius-lg) - 4px);
+  pointer-events:none;
+}
+.hero-card::after{
+  /* 左上角徽章装饰：金色小盾 */
+  content:'⚜';
+  position:absolute;top:10px;left:14px;
+  font-size:18px;color:var(--gold-2);
+  text-shadow:0 1px 0 rgba(255,255,255,0.5);
+}
+.hero-text-block{position:relative;z-index:2;padding:6px 0 18px 22px}
+.hero-eyebrow{
+  font-family:'Playfair Display',serif;
+  font-size:10px;font-weight:700;color:var(--wine);
+  letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;
+}
+.hero-title{
+  font-family:'Playfair Display',serif;
+  font-size:23px;font-weight:900;color:var(--ink);
+  line-height:1.2;margin-bottom:6px;
+  letter-spacing:0.5px;
+}
+.hero-sub{
+  font-size:13px;color:var(--text-2);font-weight:400;
+  font-style:italic;
+}
+.hero-panda{
+  position:absolute;right:-4px;bottom:-20px;z-index:3;
+  width:92px;height:auto;
+  filter:drop-shadow(0 6px 10px rgba(30,58,47,0.25));
+  transition:transform 0.35s cubic-bezier(.34,1.56,.64,1);
+  cursor:pointer;
+  image-rendering:pixelated;
+}
+.hero-panda:hover{transform:scale(1.06) translateY(-4px)}
+.hero-panda.bounce{animation:heroBounce 0.45s cubic-bezier(.36,.07,.19,.97)}
+@keyframes heroBounce{
+  0%{transform:scale(1)}
+  30%{transform:scale(1.12) translateY(-10px)}
+  60%{transform:scale(0.96) translateY(2px)}
+  100%{transform:scale(1)}
+}
+/* 学院风：小熊猫脚下的缎带 */
+.panda-ribbon{
+  position:absolute;right:8px;bottom:-28px;z-index:2;
+  font-family:'Playfair Display',serif;
+  font-size:9px;font-weight:900;letter-spacing:2px;
+  color:var(--parchment);
+  background:var(--wine);
+  padding:3px 10px;
+  box-shadow:0 2px 4px rgba(0,0,0,0.15);
+  /* 缎带切角 */
+  clip-path:polygon(6px 0,calc(100% - 6px) 0,100% 50%,calc(100% - 6px) 100%,6px 100%,0 50%);
+  text-transform:uppercase;
+}
+
+/* ── 进度环（学院风配色） ── */
+.rings-row{display:flex;justify-content:space-around;margin-bottom:20px;padding:8px 4px 0}
+.ring-item{display:flex;flex-direction:column;align-items:center;gap:8px}
+.ring-wrap{position:relative;width:72px;height:72px}
+.ring-wrap svg{transform:rotate(-90deg)}
+.ring-bg{fill:none;stroke:var(--border);stroke-width:5}
+.ring-fg{
+  fill:none;stroke:var(--ink);stroke-width:5;stroke-linecap:round;
+  transition:stroke-dashoffset 1s ease;
+}
+.ring-fg.gold{stroke:var(--gold-2)}
+.ring-fg.wine{stroke:var(--wine)}
+.ring-num{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  font-family:'Playfair Display',serif;
+  font-size:16px;font-weight:900;color:var(--ink);text-align:center;
+  white-space:nowrap;
+}
+.ring-label{
+  font-size:10px;color:var(--text-2);font-weight:600;text-align:center;
+  letter-spacing:1.5px;text-transform:uppercase;
+}
+
+/* ── 小节标题 ── */
+.sec-title{
+  font-family:'Playfair Display',serif;
+  font-size:11px;font-weight:700;color:var(--wine);
+  margin:20px 0 12px 2px;
+  letter-spacing:3px;text-transform:uppercase;
+  display:flex;align-items:center;gap:8px;
+}
+.sec-title::before,.sec-title::after{
+  content:'';flex:0 0 12px;height:1px;background:var(--gold-2);opacity:0.5;
+}
+.sec-title::after{flex:1}
+
+/* ── 分类芯片 ── */
+.chip-row{
+  display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;
+}
+.chip{
+  display:inline-flex;align-items:center;
+  font-family:'Lora',serif;
+  font-size:12px;padding:6px 13px;
+  border-radius:20px;cursor:pointer;
+  font-weight:600;transition:all .15s;
+  border:1.5px solid var(--border);background:var(--cream);color:var(--text-2);
+  -webkit-tap-highlight-color:transparent;
+}
+.chip:active{transform:scale(0.96)}
+.chip-on{
+  background:var(--ink);color:var(--parchment);
+  border-color:var(--ink);
+  box-shadow:0 2px 6px rgba(30,58,47,0.25);
+}
+
+/* ── 进度条 ── */
+.pb{
+  height:5px;background:var(--border);border-radius:3px;
+  overflow:hidden;margin-bottom:16px;position:relative;
+  box-shadow:inset 0 1px 2px rgba(0,0,0,0.06);
+}
+.pf{
+  height:100%;border-radius:3px;
+  background:linear-gradient(90deg,var(--ink) 0%,var(--gold-2) 100%);
+  transition:width 0.5s ease;
+}
+
+/* ── 翻转卡 ── */
+.flip-scene{
+  width:100%;min-height:240px;margin-bottom:14px;
+  perspective:1200px;cursor:pointer;
+}
+.flip-card{
+  width:100%;min-height:240px;position:relative;
+  transform-style:preserve-3d;
+  transition:transform 0.6s cubic-bezier(0.4,0,0.2,1);
+}
+.flip-card.flipped{transform:rotateY(180deg)}
+.flip-front,.flip-back{
+  position:absolute;top:0;left:0;width:100%;min-height:240px;
+  backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  border-radius:var(--radius-lg);padding:28px 22px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;
+  background:var(--cream);
+  border:2px solid var(--ink);
+  box-shadow:var(--shadow-card);
+}
+.flip-front::before,.flip-back::before{
+  /* 内描金边 */
+  content:'';position:absolute;inset:5px;
+  border:1px solid var(--gold);
+  border-radius:calc(var(--radius-lg) - 5px);
+  pointer-events:none;
+}
+.flip-front::after{
+  /* 右上角小装饰 */
+  content:'✦';position:absolute;top:12px;right:14px;
+  font-size:14px;color:var(--gold-2);opacity:0.6;
+}
+.flip-back{
+  transform:rotateY(180deg);
+  background:linear-gradient(180deg,var(--cream) 0%,var(--parchment-2) 100%);
+}
+.flip-back::after{
+  content:'✦';position:absolute;top:12px;right:14px;
+  font-size:14px;color:var(--wine);opacity:0.6;
+}
+/* 正面：大单词 */
+.fw{
+  font-family:'Playfair Display',serif;
+  font-size:34px;font-weight:900;color:var(--ink);
+  margin-bottom:8px;letter-spacing:0.5px;
+  line-height:1.15;
+}
+.fcat{
+  font-family:'Playfair Display',serif;
+  font-size:10px;padding:4px 12px;border-radius:20px;
+  background:transparent;color:var(--wine);
+  border:1.5px solid var(--wine);
+  margin-bottom:14px;display:inline-block;
+  font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
+}
+/* 背面：中文 + 例句 */
+.fcn{
+  font-family:'Lora',serif;
+  font-size:20px;color:var(--ink);font-weight:700;
+  margin-bottom:12px;
+}
+.feg-wrap{
+  margin-top:10px;padding-top:14px;
+  border-top:1px dashed var(--border-2);
+  width:100%;
+}
+.feg{
+  font-family:'Lora',serif;
+  font-size:14px;color:var(--text);
+  font-style:italic;cursor:pointer;line-height:1.6;
+  margin-bottom:4px;
+}
+.feg-zh{
+  font-size:12px;color:var(--text-2);
+  font-style:normal;margin-top:6px;
+  font-weight:400;
+}
+.tap-hint{
+  font-size:10px;color:var(--text-3);
+  letter-spacing:2px;text-transform:uppercase;
+  margin-top:14px;font-weight:600;
+}
+
+/* ── 朗读按钮 ── */
+.speak-btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:38px;height:38px;border-radius:50%;
+  background:var(--cream);border:2px solid var(--ink);
+  color:var(--ink);font-size:16px;cursor:pointer;
+  transition:all .15s;
+  -webkit-tap-highlight-color:transparent;
+  box-shadow:var(--shadow-soft);
+}
+.speak-btn:active{transform:scale(0.92)}
+.speak-btn:hover{background:var(--ink);color:var(--parchment)}
+.speak-btn.playing{
+  background:var(--wine);color:var(--parchment);
+  border-color:var(--wine);
+  animation:speakPulse 0.8s ease-in-out infinite;
+}
+@keyframes speakPulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(139,38,53,0.5)}
+  50%{box-shadow:0 0 0 8px rgba(139,38,53,0)}
+}
+.speak-row{
+  display:flex;gap:10px;justify-content:center;
+  margin:4px 0 0;
+}
+.speak-btn-wide{
+  width:auto;height:auto;padding:8px 14px;
+  border-radius:20px;font-size:12px;gap:6px;
+  font-family:'Lora',serif;font-weight:700;
+  letter-spacing:0.5px;
+}
+
+/* ── 操作按钮 ── */
+.action-row{
+  display:grid;grid-template-columns:1fr 1fr;gap:10px;
+  margin-top:14px;
+}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:6px;
+  padding:13px 16px;border-radius:10px;
+  font-family:'Playfair Display',serif;
+  font-size:13px;font-weight:700;
+  cursor:pointer;letter-spacing:2px;text-transform:uppercase;
+  border:2px solid transparent;
+  transition:all 0.2s ease;
+  -webkit-tap-highlight-color:transparent;
+}
+.btn:active{transform:scale(0.97)}
+.btn-ink{
+  background:var(--ink);border-color:var(--ink);color:var(--parchment);
+  box-shadow:0 3px 8px rgba(30,58,47,0.25);
+}
+.btn-ink:hover{background:var(--ink-2)}
+.btn-wine{
+  background:transparent;border-color:var(--wine);color:var(--wine);
+}
+.btn-wine:hover{background:var(--wine);color:var(--parchment)}
+.btn-ghost{
+  background:transparent;border-color:var(--border-2);color:var(--text-2);
+}
+.btn-ghost:hover{background:var(--parchment-2)}
+
+/* ── 长按释义浮层 ── */
+.lp-tip{
+  position:fixed;z-index:2000;
+  background:var(--ink);color:var(--parchment);
+  border:1.5px solid var(--gold);
+  border-radius:10px;padding:10px 14px;
+  font-family:'Lora',serif;
+  font-size:13px;
+  box-shadow:0 8px 20px rgba(30,58,47,0.4);
+  pointer-events:none;
+  animation:tipFade 0.2s ease;
+  max-width:220px;
+}
+.lp-tip-w{
+  font-family:'Playfair Display',serif;
+  font-weight:900;color:var(--gold);
+  font-size:14px;margin-bottom:3px;
+  letter-spacing:0.5px;
+}
+.lp-tip-zh{font-size:13px;line-height:1.4}
+@keyframes tipFade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── 完成页 ── */
+.done-card{
+  text-align:center;padding:40px 24px;
+  background:var(--cream);border:2px solid var(--ink);
+  border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-card);
+  position:relative;
+}
+.done-card::before{
+  content:'';position:absolute;inset:5px;
+  border:1px solid var(--gold);border-radius:calc(var(--radius-lg) - 5px);
+  pointer-events:none;
+}
+.done-crest{font-size:48px;margin-bottom:10px;color:var(--gold-2)}
+.done-title{
+  font-family:'Playfair Display',serif;
+  font-size:22px;font-weight:900;color:var(--ink);
+  margin-bottom:8px;
+}
+.done-sub{font-size:13px;color:var(--text-2);margin-bottom:22px}
+
+/* ── toast ── */
+.toast{
+  position:fixed;bottom:30px;left:50%;transform:translateX(-50%);
+  background:var(--ink);color:var(--parchment);
+  border:1.5px solid var(--gold);
+  padding:10px 18px;border-radius:22px;
+  font-family:'Lora',serif;font-size:13px;font-weight:600;
+  box-shadow:0 6px 16px rgba(30,58,47,0.3);
+  z-index:2500;
+  animation:toastIn 0.3s ease;
+}
+@keyframes toastIn{from{opacity:0;transform:translate(-50%,10px)}to{opacity:1;transform:translate(-50%,0)}}
+
+/* ── 设置按钮 ── */
+.settings-btn{
+  position:absolute;top:14px;right:14px;
+  background:transparent;border:none;
+  color:var(--gold);font-size:18px;cursor:pointer;
+  padding:4px;line-height:1;
+  -webkit-tap-highlight-color:transparent;
+}
+.settings-modal{
+  position:fixed;inset:0;z-index:3000;
+  background:rgba(30,58,47,0.5);
+  display:none;align-items:center;justify-content:center;
+  padding:20px;
+}
+.settings-modal.open{display:flex}
+.settings-box{
+  background:var(--cream);border:2px solid var(--ink);
+  border-radius:var(--radius-lg);padding:24px 22px;
+  max-width:340px;width:100%;
+  box-shadow:0 12px 32px rgba(0,0,0,0.3);
+  position:relative;
+}
+.settings-box::before{
+  content:'';position:absolute;inset:5px;
+  border:1px solid var(--gold);border-radius:calc(var(--radius-lg) - 5px);
+  pointer-events:none;
+}
+.settings-title{
+  font-family:'Playfair Display',serif;
+  font-size:17px;font-weight:900;color:var(--ink);
+  margin-bottom:14px;letter-spacing:1px;
+  position:relative;z-index:1;
+}
+.settings-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:10px 0;border-bottom:1px dashed var(--border);
+  position:relative;z-index:1;
+}
+.settings-row:last-of-type{border-bottom:none}
+.settings-label{font-size:13px;color:var(--text);font-weight:600}
+.seg{
+  display:inline-flex;background:var(--parchment-2);border-radius:18px;
+  padding:3px;border:1px solid var(--border);
+}
+.seg-btn{
+  padding:5px 12px;font-size:12px;font-weight:700;
+  background:transparent;border:none;cursor:pointer;
+  color:var(--text-2);border-radius:14px;
+  font-family:'Lora',serif;
+}
+.seg-btn.active{background:var(--ink);color:var(--parchment)}
+
+/* 小屏调整 */
+@media (max-width:360px){
+  .fw{font-size:28px}
+  .hero-title{font-size:20px}
+  .hero-panda{width:80px}
+}
+</style>
+</head>
+<body>
+<div id="wrap">
+
+  <!-- 顶部徽章栏 -->
+  <div class="hbar">
+    <span class="hbar-crest">⚜</span>
+    <span class="hbar-title">PET ACADEMY</span>
+    <span class="hbar-divider">·</span>
+    <span class="hbar-crest">B1</span>
+    <button class="settings-btn" onclick="toggleSettings()" title="设置">⚙</button>
+  </div>
+
+  <div class="scroll-content">
+
+    <!-- HERO 徽章卡 -->
+    <div class="hero-card">
+      <div class="hero-text-block">
+        <div class="hero-eyebrow">Cambridge B1 · Preliminary</div>
+        <div class="hero-title">今日单词</div>
+        <div class="hero-sub">Learn well, speak bravely.</div>
+      </div>
+      <img class="hero-panda" id="hero-panda" alt="小熊猫" onclick="pandaBounce()">
+      <div class="panda-ribbon">Scholar</div>
+    </div>
+
+    <!-- 进度环 -->
+    <div class="rings-row">
+      <div class="ring-item">
+        <div class="ring-wrap">
+          <svg width="72" height="72" viewBox="0 0 72 72">
+            <circle class="ring-bg" cx="36" cy="36" r="28"/>
+            <circle class="ring-fg" id="ring0" cx="36" cy="36" r="28"
+              stroke-dasharray="175.9" stroke-dashoffset="175.9"/>
+          </svg>
+          <div class="ring-num" id="ringNum0">0/0</div>
+        </div>
+        <div class="ring-label">Today</div>
+      </div>
+      <div class="ring-item">
+        <div class="ring-wrap">
+          <svg width="72" height="72" viewBox="0 0 72 72">
+            <circle class="ring-bg" cx="36" cy="36" r="28"/>
+            <circle class="ring-fg gold" id="ring1" cx="36" cy="36" r="28"
+              stroke-dasharray="175.9" stroke-dashoffset="175.9"/>
+          </svg>
+          <div class="ring-num" id="ringNum1">0</div>
+        </div>
+        <div class="ring-label">Mastered</div>
+      </div>
+      <div class="ring-item">
+        <div class="ring-wrap">
+          <svg width="72" height="72" viewBox="0 0 72 72">
+            <circle class="ring-bg" cx="36" cy="36" r="28"/>
+            <circle class="ring-fg wine" id="ring2" cx="36" cy="36" r="28"
+              stroke-dasharray="175.9" stroke-dashoffset="175.9"/>
+          </svg>
+          <div class="ring-num" id="ringNum2">0</div>
+        </div>
+        <div class="ring-label">Streak</div>
+      </div>
+    </div>
+
+    <!-- 主学习区 -->
+    <div class="sec-title">Flashcards</div>
+
+    <div class="chip-row" id="chipRow"></div>
+
+    <div class="pb"><div class="pf" id="progressBar" style="width:0%"></div></div>
+
+    <div id="cardZone"></div>
+
+  </div>
+</div>
+
+<!-- 设置弹窗 -->
+<div class="settings-modal" id="settingsModal" onclick="if(event.target===this)toggleSettings()">
+  <div class="settings-box">
+    <div class="settings-title">设置 · Settings</div>
+    <div class="settings-row">
+      <span class="settings-label">语音 Accent</span>
+      <div class="seg" id="accentSeg">
+        <button class="seg-btn active" data-accent="en-GB" onclick="setAccent('en-GB')">英式 GB</button>
+        <button class="seg-btn" data-accent="en-US" onclick="setAccent('en-US')">美式 US</button>
+      </div>
+    </div>
+    <div class="settings-row">
+      <span class="settings-label">语速 Speed</span>
+      <div class="seg" id="speedSeg">
+        <button class="seg-btn" data-speed="0.7" onclick="setSpeed(0.7)">慢</button>
+        <button class="seg-btn active" data-speed="0.85" onclick="setSpeed(0.85)">适中</button>
+        <button class="seg-btn" data-speed="1.0" onclick="setSpeed(1.0)">快</button>
+      </div>
+    </div>
+    <div class="settings-row">
+      <span class="settings-label">自动朗读</span>
+      <div class="seg" id="autoSeg">
+        <button class="seg-btn active" data-auto="1" onclick="setAuto(1)">开</button>
+        <button class="seg-btn" data-auto="0" onclick="setAuto(0)">关</button>
+      </div>
+    </div>
+    <div style="margin-top:16px;position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <button class="btn btn-ghost" onclick="resetProgress()">重置进度</button>
+      <button class="btn btn-ink" onclick="toggleSettings()">完成</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   PET 单词库 · 500 词 Starter 层（10-12 岁 PET/B1 适配）
+   格式：类别|英文|中文|英文例句|中文例句
+   类别：sc学校 fa家庭 fo食物 sp运动 tr旅行 he健康 we天气 ho家居 sh购物 fe情感
+============================================================ */
+const CM={
+  sc:'School',fa:'Family',fo:'Food',sp:'Sports',tr:'Travel',
+  he:'Health',we:'Weather',ho:'Home',sh:'Shopping',fe:'Feelings'
+};
+const CM_ZH={
+  sc:'学校',fa:'家庭',fo:'食物',sp:'运动',tr:'旅行',
+  he:'健康',we:'天气',ho:'居家',sh:'购物',fe:'情感'
+};
+
+const RAW=`sc|classroom|教室|Our classroom is on the second floor.|我们的教室在二楼。
+sc|teacher|老师|Our English teacher is very kind.|我们的英语老师很友善。
+sc|student|学生|He is a hardworking student.|他是个用功的学生。
+sc|homework|家庭作业|I finish my homework before dinner.|我晚饭前做完作业。
+sc|lesson|课程|The maths lesson starts at nine.|数学课九点开始。
+sc|subject|学科|Science is my favourite subject.|科学是我最喜欢的科目。
+sc|timetable|课程表|Check the timetable on the wall.|看墙上的课程表。
+sc|uniform|校服|We wear a school uniform every day.|我们每天穿校服。
+sc|playground|操场|The children play on the playground.|孩子们在操场上玩耍。
+sc|library|图书馆|I borrow books from the library.|我从图书馆借书。
+sc|canteen|食堂|Lunch in the canteen is cheap.|食堂的午餐很便宜。
+sc|blackboard|黑板|The teacher writes on the blackboard.|老师在黑板上写字。
+sc|textbook|课本|Open your textbook to page ten.|请把课本翻到第十页。
+sc|notebook|笔记本|Write the date in your notebook.|把日期写在笔记本上。
+sc|pencil|铅笔|She sharpened her pencil.|她削了铅笔。
+sc|eraser|橡皮擦|May I borrow your eraser?|我能借用你的橡皮吗？
+sc|ruler|尺子|Draw the line with a ruler.|用尺子画这条线。
+sc|exam|考试|The exam lasts two hours.|考试持续两小时。
+sc|test|测验|We had a spelling test today.|我们今天有拼写测验。
+sc|mark|分数|She got a high mark in English.|她英语得了高分。
+sc|grade|年级|I am in grade six.|我上六年级。
+sc|classmate|同学|My classmate helps me with maths.|我的同学帮我学数学。
+sc|headmaster|校长|The headmaster spoke at assembly.|校长在集会上讲话。
+sc|break|课间休息|We have a short break at ten.|我们十点有一个短暂的课间。
+sc|term|学期|The new term begins in September.|新学期九月开始。
+sc|learn|学习|I learn English at school.|我在学校学英语。
+sc|study|学习，研究|She studies hard every evening.|她每晚都努力学习。
+sc|teach|教授|He teaches us maths.|他教我们数学。
+sc|answer|回答，答案|Please answer the question.|请回答问题。
+sc|question|问题|I have a question for you.|我有个问题问你。
+sc|read|阅读|I read English stories before bed.|我睡前读英语故事。
+sc|write|书写|Write your name at the top.|在顶端写上你的名字。
+sc|spell|拼写|Can you spell your surname?|你能拼写你的姓氏吗？
+sc|forget|忘记|Don't forget the deadline.|别忘了截止日期。
+sc|explain|解释|The teacher explained the rule clearly.|老师清楚地解释了规则。
+sc|practise|练习|Practise English every day.|每天练习英语。
+sc|repeat|重复|Please repeat the word slowly.|请慢慢地再说一次这个词。
+sc|correct|正确的|Your answer is correct.|你的答案是对的。
+sc|mistake|错误|Everyone makes mistakes.|每个人都会犯错。
+sc|improve|提高，改进|I want to improve my writing.|我想提高我的写作。
+sc|progress|进步|She has made great progress.|她取得了很大的进步。
+sc|prize|奖品|He won a prize for his essay.|他的作文获了奖。
+sc|certificate|证书|She received a music certificate.|她收到一张音乐证书。
+sc|project|项目作业|We worked on a group project.|我们做了一个小组项目。
+sc|group|小组|Work in groups of four.|四人一组合作。
+sc|partner|搭档|Find a partner for this game.|找一个搭档做这个游戏。
+sc|rule|规则|Follow the classroom rules.|遵守教室规则。
+fa|mother|妈妈|My mother cooks delicious meals.|我妈妈做的饭很好吃。
+fa|father|爸爸|My father works in an office.|我爸爸在办公室工作。
+fa|parent|父母|My parents love me very much.|父母非常爱我。
+fa|brother|兄弟|My brother is taller than me.|我哥哥比我高。
+fa|sister|姐妹|My sister plays the piano.|我姐姐弹钢琴。
+fa|grandfather|祖父|My grandfather tells funny stories.|祖父讲的故事很有趣。
+fa|grandmother|祖母|My grandmother bakes bread on Sundays.|祖母周日烤面包。
+fa|uncle|叔叔|My uncle lives in London.|我叔叔住在伦敦。
+fa|aunt|阿姨|My aunt visits us every year.|我阿姨每年都来看我们。
+fa|cousin|表（堂）兄弟姐妹|My cousin is my best friend.|我的表亲是我最好的朋友。
+fa|son|儿子|They have one son and two daughters.|他们有一个儿子和两个女儿。
+fa|daughter|女儿|Their daughter is very clever.|他们的女儿很聪明。
+fa|baby|婴儿|The baby is sleeping quietly.|宝宝正在安静地睡觉。
+fa|family|家人|I love my family very much.|我非常爱我的家人。
+fa|home|家|Home is the warmest place.|家是最温暖的地方。
+fa|together|一起|We eat dinner together.|我们一起吃晚饭。
+fa|live|住|They live near the park.|他们住在公园附近。
+fa|birthday|生日|My birthday is in May.|我的生日在五月。
+fa|wedding|婚礼|Their wedding was lovely.|他们的婚礼很美。
+fa|photo|照片|Here is a photo of my family.|这是一张我家的照片。
+fa|name|名字|What is your name?|你叫什么名字？
+fa|age|年龄|She is the same age as me.|她和我同岁。
+fa|young|年轻的|My aunt is young and active.|我阿姨年轻又活跃。
+fa|old|年长的|My grandfather is quite old.|我祖父年纪相当大了。
+fa|kind|友善的|She is kind to everyone.|她对每个人都很友善。
+fa|friendly|友好的|The neighbours are very friendly.|邻居们非常友好。
+fa|polite|有礼貌的|Always be polite to elders.|对长辈要有礼貌。
+fa|strict|严格的|My father is a bit strict.|我爸爸有点严格。
+fa|clever|聪明的|She is clever at maths.|她数学很聪明。
+fa|funny|有趣的|My uncle is very funny.|我叔叔非常有趣。
+fa|tall|高的|My brother is tall and thin.|我哥哥又高又瘦。
+fa|short|矮的|She is short but strong.|她个子矮但很壮。
+fa|help|帮助|I help my mum wash the dishes.|我帮妈妈洗碗。
+fa|care|关心|My family cares about me.|我的家人关心我。
+fa|share|分享|Share your toys with your sister.|把你的玩具分给妹妹。
+fa|hug|拥抱|Give grandma a big hug.|给奶奶一个大大的拥抱。
+fa|twin|双胞胎|My cousins are twins.|我的表兄弟是双胞胎。
+fa|neighbour|邻居|Our neighbour is very helpful.|我们的邻居乐于助人。
+fa|friend|朋友|A true friend is a treasure.|真正的朋友是珍宝。
+fa|pet|宠物|We have a pet cat at home.|我们家养了一只宠物猫。
+fa|dog|狗|My dog follows me everywhere.|我的狗到哪儿都跟着我。
+fa|cat|猫|The cat is sleeping on the sofa.|猫在沙发上睡觉。
+fa|married|已婚的|My aunt got married last year.|我阿姨去年结婚了。
+fo|breakfast|早餐|I have breakfast at seven.|我七点吃早餐。
+fo|lunch|午餐|Lunch is ready.|午餐准备好了。
+fo|dinner|晚餐|We have dinner together.|我们一起吃晚餐。
+fo|meal|一餐，饭菜|It was a delicious meal.|这是一顿美味的饭。
+fo|bread|面包|I eat bread with butter.|我吃面包配黄油。
+fo|butter|黄油|Spread butter on the toast.|把黄油抹在吐司上。
+fo|milk|牛奶|A glass of milk, please.|请来一杯牛奶。
+fo|cheese|奶酪|Do you like cheese?|你喜欢奶酪吗？
+fo|egg|鸡蛋|I eat two eggs for breakfast.|我早餐吃两个鸡蛋。
+fo|rice|米饭|Rice is our main food.|米饭是我们的主食。
+fo|noodles|面条|She cooked hot noodles.|她煮了热面条。
+fo|soup|汤|The soup tastes wonderful.|这汤味道好极了。
+fo|chicken|鸡肉|Chicken is her favourite meat.|鸡肉是她最喜欢的肉。
+fo|fish|鱼肉|We had fish and chips.|我们吃了炸鱼薯条。
+fo|meat|肉|He doesn't eat meat.|他不吃肉。
+fo|vegetable|蔬菜|Eat more vegetables every day.|每天多吃蔬菜。
+fo|fruit|水果|Fruit is good for you.|水果对你有益。
+fo|apple|苹果|An apple a day keeps you healthy.|一天一苹果，身体好。
+fo|banana|香蕉|Monkeys love bananas.|猴子爱吃香蕉。
+fo|orange|橙子|This orange is very sweet.|这个橙子很甜。
+fo|grape|葡萄|The grapes are sour.|这葡萄是酸的。
+fo|strawberry|草莓|Strawberry jam is my favourite.|草莓酱是我的最爱。
+fo|tomato|番茄|Put some tomato in the salad.|在沙拉里放些番茄。
+fo|potato|土豆|I like baked potatoes.|我喜欢烤土豆。
+fo|salad|沙拉|She made a green salad.|她做了一份蔬菜沙拉。
+fo|sandwich|三明治|Make me a cheese sandwich.|给我做一个奶酪三明治。
+fo|pizza|披萨|We ordered a large pizza.|我们点了一个大披萨。
+fo|burger|汉堡|A burger and chips, please.|请来一份汉堡和薯条。
+fo|chips|薯条|The chips are too salty.|薯条太咸了。
+fo|cake|蛋糕|Birthday cake is delicious.|生日蛋糕很好吃。
+fo|biscuit|饼干|Have a biscuit with your tea.|喝茶配块饼干。
+fo|chocolate|巧克力|Dark chocolate is bitter.|黑巧克力很苦。
+fo|sweet|糖果；甜的|Too many sweets are bad for teeth.|糖吃多了对牙齿不好。
+fo|sugar|糖|No sugar in my coffee, please.|请咖啡不要加糖。
+fo|salt|盐|Add a little salt.|加一点点盐。
+fo|tea|茶|English people love tea.|英国人爱喝茶。
+fo|coffee|咖啡|Dad drinks coffee in the morning.|爸爸早上喝咖啡。
+fo|juice|果汁|Orange juice is fresh.|橙汁很新鲜。
+fo|water|水|Drink plenty of water.|多喝水。
+fo|hungry|饿的|I'm hungry after school.|放学后我饿了。
+fo|thirsty|渴的|Are you thirsty?|你渴吗？
+fo|taste|品尝，味道|Taste the soup, please.|请尝尝这汤。
+fo|delicious|美味的|The cake is delicious.|蛋糕真好吃。
+fo|sour|酸的|This lemon is too sour.|这柠檬太酸了。
+fo|spicy|辣的|Indian food can be spicy.|印度菜会很辣。
+fo|cook|烹饪|Mum is cooking dinner.|妈妈在做晚饭。
+fo|boil|煮沸|Boil the water first.|先把水烧开。
+fo|fry|油炸|Don't fry the eggs too long.|鸡蛋别炸太久。
+fo|bake|烘焙|Let's bake a cake together.|我们一起烤蛋糕吧。
+fo|menu|菜单|May I see the menu?|我可以看看菜单吗？
+fo|order|点餐|Are you ready to order?|你们可以点菜了吗？
+sp|football|足球|Football is the world's favourite sport.|足球是全世界最喜爱的运动。
+sp|basketball|篮球|He plays basketball after school.|他放学后打篮球。
+sp|tennis|网球|Tennis needs quick feet.|网球需要灵活的脚步。
+sp|swim|游泳|We swim every Saturday.|我们每周六都去游泳。
+sp|swimming|游泳（名词）|Swimming is great exercise.|游泳是很棒的运动。
+sp|run|跑步|I run in the park every morning.|我每天早上在公园跑步。
+sp|jump|跳|Can you jump over the rope?|你能跳过这根绳子吗？
+sp|kick|踢|Kick the ball to me.|把球踢给我。
+sp|throw|投掷|Throw the ball gently.|轻轻地把球扔过来。
+sp|catch|接住|Catch the ball with both hands.|用双手接住球。
+sp|hit|击打|Hit the ball harder.|把球打得用力些。
+sp|team|队伍|Our team won the match.|我们队赢得了比赛。
+sp|player|运动员|She is a skilful player.|她是个技术熟练的选手。
+sp|coach|教练|The coach trained us well.|教练训练我们训练得很好。
+sp|match|比赛|The match starts at three.|比赛三点开始。
+sp|game|比赛，游戏|We watched the football game.|我们看了足球比赛。
+sp|win|赢|We hope to win the cup.|我们希望赢得奖杯。
+sp|lose|输|It's okay to lose sometimes.|偶尔输了也没关系。
+sp|score|得分|He scored the winning goal.|他踢进了制胜一球。
+sp|goal|进球，目标|What a wonderful goal!|多么精彩的进球！
+sp|point|分数|Each basket is two points.|每个篮筐算两分。
+sp|race|赛跑|She won the 100m race.|她赢得了一百米赛跑。
+sp|finish|完成|He finished the race first.|他第一个完成比赛。
+sp|start|开始|The race starts soon.|比赛很快就要开始了。
+sp|stadium|体育场|The stadium was packed.|体育场人满为患。
+sp|gym|体育馆|I go to the gym twice a week.|我一周去两次健身房。
+sp|pool|游泳池|The pool is very clean.|游泳池非常干净。
+sp|bike|自行车|I ride my bike to school.|我骑自行车上学。
+sp|cycling|骑行|Cycling is fun and healthy.|骑自行车又有趣又健康。
+sp|skate|滑冰|She can skate beautifully.|她能滑得很漂亮。
+sp|ski|滑雪|We learned to ski in winter.|我们冬天学会了滑雪。
+sp|climb|攀登|Let's climb that small hill.|我们爬那座小山吧。
+sp|dance|跳舞|She loves to dance at parties.|她喜欢在聚会上跳舞。
+sp|yoga|瑜伽|Mum does yoga every morning.|妈妈每天早上练瑜伽。
+sp|practice|练习|Practice makes perfect.|熟能生巧。
+sp|champion|冠军|She became the tennis champion.|她成为了网球冠军。
+sp|medal|奖牌|He won a gold medal.|他赢得了一枚金牌。
+sp|fan|球迷，粉丝|Football fans were cheering loudly.|球迷们在大声欢呼。
+sp|cheer|欢呼|We cheered for our team.|我们为我们的队伍欢呼。
+sp|strong|强壮的|Sport makes you strong.|运动使你强壮。
+sp|fast|快的|He is the fastest runner.|他是跑得最快的人。
+sp|active|活跃的|Try to be more active.|试着多活动一些。
+sp|hard|努力的；硬的|Work hard and you'll improve.|努力练习你就会进步。
+sp|badminton|羽毛球|Badminton is popular in China.|羽毛球在中国很受欢迎。
+sp|volleyball|排球|We play volleyball on the beach.|我们在沙滩上打排球。
+sp|baseball|棒球|Baseball is popular in America.|棒球在美国很受欢迎。
+sp|hockey|曲棍球|Hockey is a fast game.|曲棍球是一项快节奏的运动。
+tr|travel|旅行|I love to travel in summer.|我喜欢在夏天旅行。
+tr|trip|旅程|Our trip to London was wonderful.|我们的伦敦之行很棒。
+tr|holiday|假期|We go on holiday every July.|我们每年七月去度假。
+tr|tourist|游客|Tourists visit the castle daily.|游客每天参观城堡。
+tr|passport|护照|Don't forget your passport.|别忘了带护照。
+tr|ticket|票|I bought two tickets.|我买了两张票。
+tr|airport|机场|The airport is very busy.|机场非常繁忙。
+tr|plane|飞机|The plane took off on time.|飞机准时起飞。
+tr|flight|航班|The flight lasts ten hours.|这趟航班要飞十小时。
+tr|train|火车|Take the train to Oxford.|坐火车去牛津。
+tr|station|车站|Meet me at the station.|在车站等我。
+tr|bus|公交车|I take the bus to school.|我坐公交车上学。
+tr|taxi|出租车|Let's call a taxi.|我们叫辆出租车吧。
+tr|car|汽车|Our car is small but comfy.|我们的车小但舒服。
+tr|ship|轮船|The ship sailed across the sea.|轮船在海上航行。
+tr|boat|小船|We rode in a small boat.|我们乘坐了一条小船。
+tr|map|地图|Let's look at the map.|我们看看地图吧。
+tr|suitcase|行李箱|Pack your suitcase tonight.|今晚把行李装好。
+tr|bag|包|Put your book in the bag.|把书放进包里。
+tr|hotel|酒店|We stayed in a nice hotel.|我们住在一家不错的酒店。
+tr|beach|海滩|The beach is beautiful at sunset.|日落时的海滩很美。
+tr|sea|大海|Let's go to the sea.|我们去海边吧。
+tr|mountain|山|We climbed the mountain together.|我们一起爬山。
+tr|river|河|The river is long and wide.|这条河又长又宽。
+tr|lake|湖|The lake looks like a mirror.|湖面像一面镜子。
+tr|forest|森林|The forest is full of birds.|森林里满是鸟儿。
+tr|park|公园|The park opens at dawn.|公园天亮就开门。
+tr|museum|博物馆|The museum is free on Sundays.|博物馆周日免费。
+tr|castle|城堡|We visited an old castle.|我们参观了一座古堡。
+tr|bridge|桥|Cross the bridge carefully.|过桥要小心。
+tr|city|城市|London is a busy city.|伦敦是一座繁忙的城市。
+tr|town|小镇|I grew up in a small town.|我在一个小镇长大。
+tr|village|村庄|The village is quiet and pretty.|村庄安静又漂亮。
+tr|country|国家；乡村|Which country are you from?|你来自哪个国家？
+tr|capital|首都|Beijing is the capital of China.|北京是中国的首都。
+tr|visit|游览|We visited the Tower of London.|我们参观了伦敦塔。
+tr|explore|探索|Let's explore the old town.|我们去逛逛老城区吧。
+tr|arrive|到达|We arrived at noon.|我们中午到达。
+tr|leave|离开|The bus leaves at five.|公交车五点发车。
+tr|return|返回|We returned home tired.|我们疲惫地回到家。
+tr|book|预订|I booked a hotel online.|我在网上订了酒店。
+tr|tour|旅行团，参观|The tour starts at ten.|导览十点开始。
+tr|guide|导游|The guide speaks three languages.|导游会说三种语言。
+tr|journey|旅程|The journey was long but fun.|旅程漫长但有趣。
+tr|abroad|在国外|My sister studies abroad.|我姐姐在国外留学。
+tr|souvenir|纪念品|I bought a small souvenir.|我买了一个小纪念品。
+tr|postcard|明信片|I sent you a postcard from Rome.|我从罗马给你寄了张明信片。
+tr|camera|相机|Take a photo with my camera.|用我的相机拍张照。
+tr|lost|迷路的|We got lost in the old city.|我们在老城区迷路了。
+he|healthy|健康的|Fruits keep us healthy.|水果让我们保持健康。
+he|health|健康|Your health matters most.|你的健康最重要。
+he|doctor|医生|The doctor is very patient.|医生非常耐心。
+he|nurse|护士|The nurse gave me medicine.|护士给了我药。
+he|hospital|医院|He went to the hospital yesterday.|他昨天去了医院。
+he|medicine|药|Take this medicine after meals.|饭后服用这药。
+he|ill|生病的|She is ill in bed.|她生病在床。
+he|sick|不舒服的|I feel sick today.|我今天不舒服。
+he|pain|疼痛|I have a pain in my back.|我背疼。
+he|hurt|受伤|He hurt his knee playing football.|他踢球时弄伤了膝盖。
+he|cough|咳嗽|He has a bad cough.|他咳嗽很厉害。
+he|fever|发烧|She has a high fever.|她发高烧了。
+he|headache|头痛|I have a headache.|我头疼。
+he|toothache|牙疼|See a dentist about your toothache.|牙疼要去看牙医。
+he|tired|累的|I am tired after the match.|比赛后我很累。
+he|rest|休息|You need a good rest.|你需要好好休息。
+he|sleep|睡觉|Sleep early tonight.|今晚早点睡。
+he|dream|做梦，梦想|I had a funny dream.|我做了一个有趣的梦。
+he|exercise|锻炼|Exercise is good for you.|运动对你有益。
+he|diet|饮食|Eat a balanced diet.|均衡饮食。
+he|clean|清洁的；清洁|Keep your hands clean.|保持双手干净。
+he|wash|洗|Wash your hands before meals.|饭前洗手。
+he|brush|刷|Brush your teeth twice a day.|一天刷两次牙。
+he|toothbrush|牙刷|Change your toothbrush every few months.|每隔几个月换一次牙刷。
+he|soap|肥皂|Use soap when washing hands.|洗手时用肥皂。
+he|shower|淋浴|I take a shower every evening.|我每晚都淋浴。
+he|bath|洗澡|The baby loves her bath.|宝宝喜欢洗澡。
+he|towel|毛巾|Please pass me a towel.|请递给我一条毛巾。
+he|teeth|牙齿|Strong teeth need milk.|强壮的牙齿需要牛奶。
+he|eyes|眼睛|Close your eyes and rest.|闭上眼睛休息。
+he|ears|耳朵|Cover your ears if it's too loud.|太吵就捂住耳朵。
+he|nose|鼻子|My nose is blocked.|我的鼻子不通气。
+he|mouth|嘴巴|Open your mouth wide.|把嘴张大。
+he|hand|手|Raise your hand to answer.|举手回答。
+he|foot|脚|My foot is sore.|我的脚疼。
+he|leg|腿|His leg is in plaster.|他的腿打了石膏。
+he|arm|胳膊|She broke her arm.|她胳膊摔骨折了。
+he|heart|心脏|A healthy heart is important.|健康的心脏很重要。
+he|skin|皮肤|Protect your skin from the sun.|保护皮肤免受阳光伤害。
+he|hair|头发|Her hair is long and black.|她的头发又黑又长。
+he|careful|小心的|Be careful with hot drinks.|喝热饮要小心。
+he|safe|安全的|Stay safe on the road.|路上注意安全。
+he|danger|危险|Stay away from danger.|远离危险。
+he|check|检查|The nurse will check your temperature.|护士会给你量体温。
+he|better|好些了|I feel much better today.|我今天感觉好多了。
+he|worse|更糟的|His cough got worse.|他的咳嗽更严重了。
+he|weight|体重|Keep an eye on your weight.|注意一下自己的体重。
+he|habit|习惯|Reading is a good habit.|读书是个好习惯。
+we|weather|天气|The weather is lovely today.|今天天气很好。
+we|sun|太阳|The sun is warm.|阳光很暖。
+we|sunny|晴朗的|It's a sunny afternoon.|这是个晴朗的下午。
+we|cloud|云|There are dark clouds.|有乌云。
+we|cloudy|多云的|It looks cloudy outside.|外面看起来多云。
+we|rain|雨，下雨|It often rains in April.|四月经常下雨。
+we|rainy|下雨的|It was a rainy morning.|那是一个下雨的早晨。
+we|snow|雪，下雪|Look! It's snowing.|看！下雪了。
+we|snowy|下雪的|We had a snowy Christmas.|我们过了一个下雪的圣诞。
+we|wind|风|The wind is strong today.|今天风很大。
+we|windy|有风的|It's cold and windy.|天气又冷又有风。
+we|storm|暴风雨|A storm is coming tonight.|今晚有暴风雨。
+we|thunder|雷|The thunder scared the cat.|雷声吓到了猫。
+we|lightning|闪电|Lightning lit up the sky.|闪电照亮了天空。
+we|hot|热的|It's too hot to play outside.|外面热得没法玩。
+we|warm|暖和的|Spring is warm and bright.|春天温暖而明亮。
+we|cool|凉爽的|The evenings are cool.|晚上很凉爽。
+we|cold|冷的|It's very cold in January.|一月里非常冷。
+we|dry|干的|The ground is dry.|地面干了。
+we|wet|湿的|My shoes are wet.|我的鞋湿了。
+we|ice|冰|Be careful on the ice.|小心冰面。
+we|fog|雾|The fog was very thick.|雾非常浓。
+we|foggy|有雾的|It's foggy this morning.|今早有雾。
+we|rainbow|彩虹|Look at that rainbow!|看那道彩虹！
+we|umbrella|雨伞|Take your umbrella.|带上你的伞。
+we|coat|外套|Put on your coat.|穿上外套。
+we|sky|天空|The sky is clear and blue.|天空清澈湛蓝。
+we|season|季节|Which season do you prefer?|你更喜欢哪个季节？
+we|spring|春天|Flowers bloom in spring.|春天花儿盛开。
+we|summer|夏天|Summer is hot and sunny.|夏天又热又晒。
+we|autumn|秋天|Leaves fall in autumn.|秋天树叶飘落。
+we|winter|冬天|Winter brings snow.|冬天带来雪。
+we|temperature|温度|The temperature dropped quickly.|气温迅速下降。
+we|degree|度|It's thirty degrees today.|今天三十度。
+we|forecast|预报|The forecast says rain.|天气预报说有雨。
+we|breeze|微风|A gentle breeze cooled us.|微风让我们凉快下来。
+we|freeze|结冰|Water freezes at zero.|水在零度结冰。
+we|melt|融化|The snow melted quickly.|雪很快融化了。
+we|shine|照耀|The sun shines brightly.|阳光灿烂。
+we|dark|黑暗的|It gets dark early in winter.|冬天天黑得早。
+we|bright|明亮的|The room is bright and airy.|房间明亮通风。
+we|outdoors|户外|We love the outdoors.|我们喜欢户外活动。
+we|indoors|室内|Stay indoors when it's freezing.|天冻时待在室内。
+we|flood|洪水|Heavy rain caused a flood.|大雨造成了洪水。
+we|weatherman|气象员|The weatherman warned of storms.|气象员警告有暴风雨。
+we|raincoat|雨衣|Wear a raincoat outside.|外出穿雨衣。
+we|sunglasses|太阳镜|She wore pink sunglasses.|她戴了一副粉色墨镜。
+we|hat|帽子|A hat will keep you warm.|戴帽子能保暖。
+we|boot|靴子|These boots are waterproof.|这双靴子防水。
+we|scarf|围巾|Wrap a scarf around your neck.|围上围巾。
+ho|house|房子|They live in a big house.|他们住在一栋大房子里。
+ho|flat|公寓|We rent a flat in the city.|我们在城里租了一套公寓。
+ho|room|房间|My room is on the top floor.|我的房间在顶楼。
+ho|bedroom|卧室|Keep your bedroom tidy.|保持卧室整洁。
+ho|bathroom|浴室|The bathroom is upstairs.|浴室在楼上。
+ho|kitchen|厨房|Mum is in the kitchen.|妈妈在厨房里。
+ho|living|客厅（living room）|We watch TV in the living room.|我们在客厅看电视。
+ho|dining|餐厅（dining room）|We eat in the dining room.|我们在餐厅吃饭。
+ho|garden|花园|The garden is full of flowers.|花园里开满了花。
+ho|yard|院子|The kids play in the yard.|孩子们在院子里玩。
+ho|door|门|Close the door, please.|请关上门。
+ho|window|窗户|Open the window for fresh air.|打开窗户透透气。
+ho|wall|墙|The wall is painted blue.|墙被漆成了蓝色。
+ho|floor|地板；楼层|The floor is just clean.|地板刚擦干净。
+ho|ceiling|天花板|The ceiling is very high.|天花板很高。
+ho|roof|屋顶|Birds sit on the roof.|鸟儿停在屋顶上。
+ho|stairs|楼梯|Go up the stairs.|上楼梯。
+ho|lift|电梯|The lift is out of order.|电梯坏了。
+ho|bed|床|I made my bed this morning.|今早我整理了床铺。
+ho|sofa|沙发|The cat sleeps on the sofa.|猫在沙发上睡觉。
+ho|chair|椅子|Sit on this chair.|坐在这把椅子上。
+ho|table|桌子|Put the plates on the table.|把盘子放桌上。
+ho|desk|书桌|My desk is by the window.|我的书桌靠窗。
+ho|shelf|架子|Books fill the shelf.|书装满了架子。
+ho|lamp|灯|Turn on the lamp.|把灯打开。
+ho|light|灯光；轻的|The light is too bright.|灯光太亮了。
+ho|curtain|窗帘|Close the curtains, please.|请把窗帘拉上。
+ho|carpet|地毯|The carpet is soft.|地毯很软。
+ho|mirror|镜子|Look in the mirror.|照照镜子。
+ho|cupboard|橱柜|Put the cups in the cupboard.|把杯子放橱柜里。
+ho|fridge|冰箱|The fridge is nearly empty.|冰箱快空了。
+ho|oven|烤箱|The bread is in the oven.|面包在烤箱里。
+ho|microwave|微波炉|Heat it in the microwave.|用微波炉加热一下。
+ho|cooker|炉子|The cooker is gas-powered.|这台灶是燃气的。
+ho|dishwasher|洗碗机|The dishwasher is running.|洗碗机在运转。
+ho|washing|洗涤（washing machine）|Put the clothes in the washing machine.|把衣服放进洗衣机。
+ho|plate|盘子|Pass me a plate, please.|请递给我一个盘子。
+ho|cup|杯子|Would you like a cup of tea?|要来杯茶吗？
+ho|glass|玻璃杯|Be careful with the glass.|小心玻璃杯。
+ho|knife|刀|The knife is sharp.|刀很锋利。
+ho|fork|叉|Use your fork, not fingers.|用叉子，不要用手。
+ho|spoon|勺子|Stir with a spoon.|用勺子搅拌。
+ho|bowl|碗|The bowl is full of rice.|碗里装满了米饭。
+ho|tidy|收拾|Let's tidy the kitchen.|我们来收拾厨房吧。
+ho|mess|乱糟糟的情景|What a mess!|真是一团糟！
+ho|quiet|安静的|The house is quiet tonight.|今晚家里很安静。
+ho|noisy|吵闹的|The street is noisy at rush hour.|高峰期街道很吵。
+ho|comfortable|舒适的|This chair is so comfortable.|这把椅子好舒服。
+ho|cosy|温馨的|The living room is cosy.|客厅很温馨。
+sh|shop|商店|There's a shop on the corner.|拐角处有家商店。
+sh|shopping|购物|Mum goes shopping on Fridays.|妈妈周五去购物。
+sh|supermarket|超市|The supermarket opens at eight.|超市八点开门。
+sh|market|市场|Saturday is market day.|星期六是集市日。
+sh|mall|商场|Let's meet at the mall.|我们在商场见吧。
+sh|bakery|面包店|The bakery smells wonderful.|面包店香气扑鼻。
+sh|bookshop|书店|I love quiet bookshops.|我喜欢安静的书店。
+sh|pharmacy|药店|The pharmacy is next door.|药店就在隔壁。
+sh|customer|顾客|The customer was very kind.|这位顾客非常友好。
+sh|shopkeeper|店主|The shopkeeper smiled at me.|店主对我笑了笑。
+sh|price|价格|The price is reasonable.|价格合理。
+sh|cost|花费|How much does it cost?|这个多少钱？
+sh|cheap|便宜的|These apples are cheap.|这些苹果很便宜。
+sh|expensive|昂贵的|That bag is expensive.|那个包很贵。
+sh|free|免费的|The sample is free.|这个试用品是免费的。
+sh|pay|付款|Pay at the till, please.|请到收银台付款。
+sh|buy|买|I want to buy a present.|我想买个礼物。
+sh|sell|卖|They sell fresh bread here.|他们在这里卖新鲜面包。
+sh|money|钱|Save your pocket money.|把你的零花钱存起来。
+sh|coin|硬币|Drop a coin in the slot.|把硬币投进去。
+sh|note|纸币|Here is a ten-pound note.|这是一张十英镑的纸币。
+sh|card|卡片|Can I pay by card?|可以刷卡吗？
+sh|change|找零；变化|Don't forget your change.|别忘了找回的零钱。
+sh|receipt|收据|Keep the receipt safe.|把收据收好。
+sh|basket|篮子|Put the apples in the basket.|把苹果放进篮子里。
+sh|trolley|购物车|Push the trolley carefully.|小心推购物车。
+sh|size|尺码|What size do you wear?|你穿多大号？
+sh|colour|颜色|What colour do you like?|你喜欢什么颜色？
+sh|choose|选择|Choose the best one.|选一个最好的。
+sh|try|尝试；试穿|Try this jacket on.|试穿这件夹克。
+sh|fit|合身|These shoes fit well.|这双鞋很合脚。
+sh|clothes|衣服|Fold your clothes neatly.|把衣服叠整齐。
+sh|shirt|衬衫|He wore a white shirt.|他穿了一件白衬衫。
+sh|trousers|裤子|The trousers are too long.|这裤子太长了。
+sh|skirt|裙子|She bought a blue skirt.|她买了一条蓝裙子。
+sh|dress|连衣裙|The dress is lovely.|这条连衣裙很漂亮。
+sh|jacket|夹克|The jacket keeps me warm.|这件夹克很保暖。
+sh|shoes|鞋|My shoes are muddy.|我的鞋沾了泥。
+sh|socks|袜子|Put on clean socks.|穿上干净的袜子。
+sh|sale|打折销售|The shop has a summer sale.|这家店在搞夏季促销。
+sh|discount|折扣|I got a ten percent discount.|我拿到了九折优惠。
+sh|offer|优惠|Today's offer ends at six.|今天的优惠六点结束。
+sh|gift|礼物|A gift for my mum.|给妈妈的礼物。
+sh|present|礼物|I love birthday presents.|我喜欢生日礼物。
+sh|deliver|递送|They deliver in an hour.|他们一小时内送达。
+sh|list|清单|Make a shopping list first.|先列一张购物清单。
+sh|queue|排队|Please join the queue.|请排队。
+fe|happy|开心的|I feel happy on holidays.|假期里我很开心。
+fe|sad|难过的|She is sad about the news.|她听了这消息很难过。
+fe|angry|生气的|Dad was angry at the delay.|爸爸为延误生气。
+fe|afraid|害怕的|I'm afraid of the dark.|我怕黑。
+fe|scared|害怕的|The noise scared the cat.|声音吓到了猫。
+fe|surprised|惊讶的|She was surprised by the gift.|她收到礼物很惊讶。
+fe|excited|兴奋的|The kids are excited about the trip.|孩子们为旅行感到兴奋。
+fe|bored|无聊的|I'm bored at home.|我在家里很无聊。
+fe|nervous|紧张的|He felt nervous before the test.|考试前他很紧张。
+fe|worried|担心的|Mum is worried about me.|妈妈担心我。
+fe|upset|心烦的|Don't get upset.|别心烦。
+fe|calm|平静的|Stay calm and try again.|保持冷静，再试一次。
+fe|relaxed|放松的|I feel relaxed at the beach.|我在海边感觉很放松。
+fe|confident|自信的|She is a confident speaker.|她是个自信的演讲者。
+fe|brave|勇敢的|A brave firefighter saved them.|一位勇敢的消防员救了他们。
+fe|generous|慷慨的|She is generous with her time.|她乐于付出时间。
+fe|honest|诚实的|Always be honest.|永远要诚实。
+fe|lazy|懒惰的|Don't be lazy.|别偷懒。
+fe|jealous|嫉妒的|He felt jealous of her success.|他嫉妒她的成功。
+fe|lonely|孤独的|She feels lonely sometimes.|她有时感到孤独。
+fe|patient|耐心的|Good teachers are patient.|好老师很有耐心。
+fe|proud|自豪的|We are proud of you.|我们为你感到骄傲。
+fe|shy|害羞的|He is shy with strangers.|他对陌生人害羞。
+fe|silly|傻的，愚蠢的|Don't be silly.|别傻了。
+fe|serious|严肃的|This is a serious problem.|这是个严肃的问题。
+fe|sorry|抱歉的|I'm sorry for being late.|对不起，我迟到了。
+fe|thankful|感激的|I feel thankful every day.|我每天都心怀感恩。
+fe|thank|感谢|Thank you for your help.|谢谢你的帮助。
+fe|hope|希望|I hope you feel better soon.|希望你早日康复。
+fe|wish|希望，祝愿|I wish you all the best.|祝你一切顺利。
+fe|smile|微笑|Her smile lights up the room.|她的微笑照亮了整个房间。
+fe|laugh|笑|We laughed so hard.|我们笑得停不下来。
+fe|cry|哭|The baby started to cry.|宝宝开始哭了。
+fe|enjoy|享受|I enjoy reading stories.|我喜欢读故事。
+fe|like|喜欢|I like playing chess.|我喜欢下棋。
+fe|love|爱|I love my new puppy.|我爱我的新小狗。
+fe|hate|讨厌|I hate being late.|我讨厌迟到。
+fe|feel|感受|How do you feel now?|你现在感觉怎么样？
+fe|think|思考|I think you are right.|我觉得你是对的。
+fe|believe|相信|Believe in yourself.|相信你自己。
+fe|mind|介意|Do you mind if I sit here?|我坐这儿你介意吗？
+fe|agree|同意|I agree with you.|我同意你的看法。
+fe|disagree|不同意|I disagree politely.|我礼貌地表示不同意。
+fe|trust|信任|I trust my best friend.|我信任我最好的朋友。
+fe|understand|理解|I understand how you feel.|我理解你的感受。
+fe|miss|想念|I miss my grandma.|我想念奶奶。
+fe|remember|记得|I remember your kindness.|我记得你的善意。
+fe|peaceful|安宁的|The lake looks peaceful.|湖面看起来很宁静。
+fe|cheerful|愉快的|She is always cheerful.|她总是很开朗。
+`;
+
+const V=RAW.trim().split('\n').map(l=>l.split('|')).filter(r=>r.length>=3);
+
+/* ============================================================
+   小熊猫图片（像素风 PNG，来自 PSLE 版本，保留）
+============================================================ */
+const PANDA_URL='data:image/png;base64,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';
+document.getElementById('hero-panda').src=PANDA_URL;
+
+/* ============================================================
+   音效系统
+============================================================ */
+let _ac;
+function _initAC(){
+  if(!_ac){
+    try{_ac=new (window.AudioContext||window.webkitAudioContext)();}catch(e){}
+  }
+}
+function _tone(f,d,t,v,delay){
+  _initAC();if(!_ac)return;
+  try{
+    const o=_ac.createOscillator(),g=_ac.createGain();
+    o.connect(g);g.connect(_ac.destination);
+    o.type=t||'sine';
+    o.frequency.setValueAtTime(f,_ac.currentTime+(delay||0));
+    g.gain.setValueAtTime(v||0.12,_ac.currentTime+(delay||0));
+    g.gain.exponentialRampToValueAtTime(0.001,_ac.currentTime+(delay||0)+d);
+    o.start(_ac.currentTime+(delay||0));
+    o.stop(_ac.currentTime+(delay||0)+d);
+  }catch(e){}
+}
+function sfxFlip(){_tone(660,.05,'sine',.07);}
+function sfxKnown(){_tone(523,.1,'sine',.12);_tone(784,.15,'sine',.12,.1);}
+function sfxSkip(){_tone(440,.08,'sine',.08);}
+function sfxDone(){[523,659,784,1047].forEach((f,i)=>_tone(f,.15,'sine',.14,i*.1));}
+document.addEventListener('touchstart',_initAC,{once:true});
+document.addEventListener('click',_initAC,{once:true});
+
+/* ============================================================
+   语音系统（沿用 PSLE 版本的高质量 voice 选择逻辑）
+============================================================ */
+let _voices=[];
+function _loadVoices(){
+  _voices=window.speechSynthesis?window.speechSynthesis.getVoices():[];
+}
+if(window.speechSynthesis){
+  _loadVoices();
+  window.speechSynthesis.onvoiceschanged=_loadVoices;
+}
+
+function _pickVoice(preferAccent){
+  const pref=(preferAccent||'en-GB').toLowerCase();
+  function scoreVoice(v){
+    let s=0;
+    const name=v.name.toLowerCase();
+    const lang=v.lang.toLowerCase();
+    // 语言：优先匹配用户选择的口音
+    if(lang===pref) s+=60;
+    else if(lang==='en-gb') s+=(pref==='en-gb'?60:25);
+    else if(lang==='en-us') s+=(pref==='en-us'?60:22);
+    else if(lang==='en-au') s+=15;
+    else if(lang.startsWith('en')) s+=8;
+    else return -1;
+    // 高质量标识
+    if(name.includes('neural')) s+=50;
+    if(name.includes('online')) s+=40;
+    if(name.includes('premium')) s+=40;
+    if(name.includes('enhanced')) s+=35;
+    if(name.includes('natural')) s+=35;
+    // 英式优质发音人
+    if(name.includes('sonia')) s+=45;     // Microsoft Sonia
+    if(name.includes('libby')) s+=42;     // Microsoft Libby
+    if(name.includes('ryan')) s+=38;      // Microsoft Ryan
+    if(name.includes('daniel')) s+=32;    // Apple Daniel
+    if(name.includes('serena')) s+=30;    // Apple Serena
+    if(name.includes('kate')) s+=28;
+    // 美式优质发音人
+    if(name.includes('aria')) s+=40;
+    if(name.includes('jenny')) s+=40;
+    if(name.includes('ava')) s+=40;
+    if(name.includes('emma')) s+=38;
+    if(name.includes('samantha')) s+=30;
+    // Google 中性偏好
+    if(name.includes('google uk')) s+=35;
+    if(name.includes('google us')) s+=30;
+    if(name.includes('google')) s+=22;
+    // 扣分项
+    if(name.includes('compact')) s-=30;
+    if(name.includes('espeak')) s-=50;
+    if(name==='microsoft david') s-=20;
+    if(name==='microsoft mark') s-=20;
+    return s;
+  }
+  const ranked=_voices.map(v=>({voice:v,score:scoreVoice(v)}))
+    .filter(x=>x.score>0).sort((a,b)=>b.score-a.score);
+  return ranked.length?ranked[0].voice:null;
+}
+
+let _utter=null;
+function speak(text,btnEl){
+  if(!window.speechSynthesis) return;
+  const clean=(text||'').replace(/[\u4e00-\u9fa5，。！？、；：""''（）【】·]/g,' ').replace(/\s+/g,' ').trim();
+  if(!clean) return;
+  window.speechSynthesis.cancel();
+  document.querySelectorAll('.speak-btn.playing').forEach(b=>b.classList.remove('playing'));
+  if(_voices.length===0) _loadVoices();
+  _utter=new SpeechSynthesisUtterance(clean);
+  const voice=_pickVoice(settings.accent);
+  if(voice){
+    _utter.voice=voice;
+    _utter.lang=voice.lang;
+  } else {
+    _utter.lang=settings.accent;
+  }
+  _utter.rate=settings.speed;
+  _utter.pitch=1.05;
+  _utter.volume=1.0;
+  if(btnEl){
+    btnEl.classList.add('playing');
+    _utter.onend=()=>btnEl.classList.remove('playing');
+    _utter.onerror=()=>btnEl.classList.remove('playing');
+  }
+  setTimeout(()=>window.speechSynthesis.speak(_utter),50);
+}
+
+/* ============================================================
+   长按释义（沿用 PSLE 版本）
+============================================================ */
+const _WD={};
+V.forEach(w=>{_WD[w[1].toLowerCase()]={zh:w[2]};});
+
+let _lpT=null,_lpEl=null;
+function _rmTip(){if(_lpEl){_lpEl.remove();_lpEl=null;}}
+function _showTip(word,x,y){
+  _rmTip();
+  const clean=word.toLowerCase().replace(/[^a-z]/g,'');
+  const info=_WD[clean];
+  if(!info) return;
+  const tip=document.createElement('div');
+  tip.className='lp-tip';
+  tip.innerHTML=`<div class="lp-tip-w">${word}</div><div class="lp-tip-zh">${info.zh}</div>`;
+  const tipX=Math.min(x,window.innerWidth-240);
+  const tipY=Math.max(y-90,10);
+  tip.style.left=tipX+'px';
+  tip.style.top=tipY+'px';
+  document.body.appendChild(tip);
+  _lpEl=tip;
+  setTimeout(_rmTip,3000);
+}
+document.addEventListener('touchstart',e=>{
+  const tgt=e.target;
+  if(!tgt.closest('.feg')) return;
+  const text=(tgt.textContent||'').trim();
+  if(!text||text.includes(' ')||text.length>30) return;
+  _lpT=setTimeout(()=>{
+    const t=e.touches[0];
+    _showTip(text,t.clientX,t.clientY);
+    navigator.vibrate&&navigator.vibrate(30);
+  },600);
+},{passive:true});
+document.addEventListener('touchend',()=>clearTimeout(_lpT),{passive:true});
+document.addEventListener('touchmove',()=>{clearTimeout(_lpT);_rmTip();},{passive:true});
+document.addEventListener('click',_rmTip);
+
+/* ============================================================
+   状态管理
+============================================================ */
+const LS_KEY='pet_flashcard_v1';
+const LS_SET='pet_flashcard_settings_v1';
+
+let settings={accent:'en-GB',speed:0.85,auto:1};
+function loadSettings(){
+  try{
+    const s=localStorage.getItem(LS_SET);
+    if(s){settings={...settings,...JSON.parse(s)};}
+  }catch(e){}
+  // 同步 UI
+  document.querySelectorAll('#accentSeg .seg-btn').forEach(b=>{
+    b.classList.toggle('active',b.dataset.accent===settings.accent);
+  });
+  document.querySelectorAll('#speedSeg .seg-btn').forEach(b=>{
+    b.classList.toggle('active',parseFloat(b.dataset.speed)===settings.speed);
+  });
+  document.querySelectorAll('#autoSeg .seg-btn').forEach(b=>{
+    b.classList.toggle('active',parseInt(b.dataset.auto)===settings.auto);
+  });
+}
+function saveSettings(){
+  try{localStorage.setItem(LS_SET,JSON.stringify(settings));}catch(e){}
+}
+function setAccent(a){settings.accent=a;saveSettings();loadSettings();toast('已切换至 '+(a==='en-GB'?'英式发音':'美式发音'));}
+function setSpeed(s){settings.speed=s;saveSettings();loadSettings();}
+function setAuto(v){settings.auto=v;saveSettings();loadSettings();}
+
+let progress={mastered:new Set(),today:new Set(),lastDate:'',streak:0};
+function loadProgress(){
+  try{
+    const s=localStorage.getItem(LS_KEY);
+    if(s){
+      const p=JSON.parse(s);
+      progress.mastered=new Set(p.mastered||[]);
+      progress.today=new Set(p.today||[]);
+      progress.lastDate=p.lastDate||'';
+      progress.streak=p.streak||0;
+    }
+  }catch(e){}
+  const today=new Date().toISOString().slice(0,10);
+  if(progress.lastDate!==today){
+    // 新的一天，重置 today，更新 streak
+    if(progress.today.size>0){
+      const prev=progress.lastDate;
+      const y=new Date();y.setDate(y.getDate()-1);
+      const yesterday=y.toISOString().slice(0,10);
+      if(prev===yesterday){progress.streak+=1;} else {progress.streak=1;}
+    }
+    progress.today=new Set();
+    progress.lastDate=today;
+    saveProgress();
+  }
+}
+function saveProgress(){
+  try{
+    localStorage.setItem(LS_KEY,JSON.stringify({
+      mastered:Array.from(progress.mastered),
+      today:Array.from(progress.today),
+      lastDate:progress.lastDate,
+      streak:progress.streak
+    }));
+  }catch(e){}
+}
+function resetProgress(){
+  if(!confirm('确定重置所有学习进度吗？')) return;
+  progress={mastered:new Set(),today:new Set(),lastDate:new Date().toISOString().slice(0,10),streak:0};
+  saveProgress();
+  toggleSettings();
+  initF(fst.filter);
+  rFlash();
+  toast('进度已重置');
+}
+
+/* ============================================================
+   单词卡核心逻辑
+============================================================ */
+const DAILY_TARGET=20;
+
+let fst={filter:'all',order:[],done:new Set(),flipped:false};
+
+function initF(cat){
+  fst.filter=cat||'all';
+  let pool=[];
+  V.forEach((w,i)=>{
+    if(fst.filter==='all'||w[0]===fst.filter) pool.push(i);
+  });
+  // 优先未掌握的
+  pool.sort((a,b)=>{
+    const am=progress.mastered.has(a)?1:0;
+    const bm=progress.mastered.has(b)?1:0;
+    if(am!==bm) return am-bm;
+    return Math.random()-0.5;
+  });
+  fst.order=pool;
+  fst.done=new Set();
+  fst.flipped=false;
+}
+
+function rFlash(){
+  const app=document.getElementById('cardZone');
+  const chipRow=document.getElementById('chipRow');
+
+  // 渲染分类 chips
+  const counts={all:V.length};
+  V.forEach(w=>{counts[w[0]]=(counts[w[0]]||0)+1;});
+  const cats=Object.keys(CM).map(k=>[k,CM_ZH[k]]);
+  chipRow.innerHTML=
+    `<span class="chip ${fst.filter==='all'?'chip-on':''}" onclick="sfxFlip();initF('all');rFlash()">全部 ${counts.all}</span>`+
+    cats.map(([k,v])=>`<span class="chip ${fst.filter===k?'chip-on':''}" onclick="sfxFlip();initF('${k}');rFlash()">${v} ${counts[k]||0}</span>`).join('');
+
+  // 进度条
+  const total=fst.order.length;
+  const doneCount=fst.done.size;
+  const pct=total?Math.round(doneCount/total*100):0;
+  document.getElementById('progressBar').style.width=pct+'%';
+
+  // 剩余单词
+  const remaining=fst.order.filter(i=>!fst.done.has(i));
+  if(remaining.length===0){
+    app.innerHTML=`
+      <div class="done-card">
+        <div class="done-crest">✦</div>
+        <div class="done-title">This Round Complete</div>
+        <div class="done-sub">本组 ${total} 词已学习完成</div>
+        <div class="action-row">
+          <button class="btn btn-wine" onclick="sfxFlip();initF(fst.filter);rFlash()">再学一轮</button>
+          <button class="btn btn-ink" onclick="sfxFlip();initF('all');rFlash()">换一类</button>
+        </div>
+      </div>`;
+    updateRings();
+    sfxDone();
+    return;
+  }
+
+  const ci=remaining[0];
+  const w=V[ci];
+  const cat=CM[w[0]]||'Word';
+
+  app.innerHTML=`
+    <div class="flip-scene" onclick="flipCard()">
+      <div class="flip-card ${fst.flipped?'flipped':''}" id="flipCard">
+        <div class="flip-front">
+          <div class="fcat">${cat}</div>
+          <div class="fw">${w[1]}</div>
+          <div class="speak-row">
+            <button class="speak-btn" onclick="event.stopPropagation();speak('${w[1].replace(/'/g,"\\'")}',this)" title="朗读单词">🔊</button>
+          </div>
+          <div class="tap-hint">Tap to reveal</div>
+        </div>
+        <div class="flip-back">
+          <div class="fcat">${cat}</div>
+          <div class="fw">${w[1]}</div>
+          <div class="fcn">${w[2]}</div>
+          ${w[3]?`
+            <div class="feg-wrap">
+              <div class="feg" onclick="event.stopPropagation();speak('${(w[3]||'').replace(/'/g,"\\'")}',this.querySelector('.speak-btn-wide')||this)">
+                ${w[3].split(' ').map(word=>`<span>${word}</span>`).join(' ')}
+              </div>
+              ${w[4]?`<div class="feg-zh">${w[4]}</div>`:''}
+            </div>`:''}
+        </div>
+      </div>
+    </div>
+    <div class="action-row">
+      <button class="btn btn-ghost" onclick="skipWord()">跳过 Skip</button>
+      <button class="btn btn-ink" onclick="markKnown()">认识 ✓</button>
+    </div>
+  `;
+
+  updateRings();
+
+  // 自动朗读（切到新词时）
+  if(settings.auto){
+    setTimeout(()=>{
+      const btn=document.querySelector('.flip-front .speak-btn');
+      if(btn) speak(w[1],btn);
+    },300);
+  }
+}
+
+function flipCard(){
+  const card=document.getElementById('flipCard');
+  if(!card) return;
+  fst.flipped=!fst.flipped;
+  card.classList.toggle('flipped',fst.flipped);
+  sfxFlip();
+  // 翻到背面时朗读例句
+  if(fst.flipped && settings.auto){
+    const remaining=fst.order.filter(i=>!fst.done.has(i));
+    if(remaining.length){
+      const w=V[remaining[0]];
+      if(w[3]){
+        setTimeout(()=>{
+          const btn=document.querySelector('.flip-back .feg');
+          if(btn) speak(w[3],btn);
+        },700);
+      }
+    }
+  }
+}
+
+function markKnown(){
+  const remaining=fst.order.filter(i=>!fst.done.has(i));
+  if(remaining.length===0) return;
+  const ci=remaining[0];
+  fst.done.add(ci);
+  progress.mastered.add(ci);
+  progress.today.add(ci);
+  saveProgress();
+  fst.flipped=false;
+  sfxKnown();
+  pandaBounce();
+  setTimeout(rFlash,180);
+}
+
+function skipWord(){
+  const remaining=fst.order.filter(i=>!fst.done.has(i));
+  if(remaining.length===0) return;
+  const ci=remaining[0];
+  fst.done.add(ci);
+  progress.today.add(ci);
+  saveProgress();
+  fst.flipped=false;
+  sfxSkip();
+  setTimeout(rFlash,120);
+}
+
+function pandaBounce(){
+  const p=document.getElementById('hero-panda');
+  if(!p) return;
+  p.classList.remove('bounce');
+  void p.offsetWidth;
+  p.classList.add('bounce');
+}
+
+/* ============================================================
+   进度环
+============================================================ */
+function updateRings(){
+  // Today: 今日学习 / 每日目标
+  const todayCount=progress.today.size;
+  const todayPct=Math.min(todayCount/DAILY_TARGET,1);
+  setRing('ring0',todayPct);
+  document.getElementById('ringNum0').textContent=`${todayCount}/${DAILY_TARGET}`;
+  // Mastered: 已掌握 / 总词库
+  const masteredPct=V.length?progress.mastered.size/V.length:0;
+  setRing('ring1',masteredPct);
+  document.getElementById('ringNum1').textContent=progress.mastered.size;
+  // Streak
+  const streakPct=Math.min(progress.streak/30,1);
+  setRing('ring2',streakPct);
+  document.getElementById('ringNum2').textContent=progress.streak;
+}
+function setRing(id,pct){
+  const el=document.getElementById(id);
+  if(!el) return;
+  const circ=2*Math.PI*28;
+  el.setAttribute('stroke-dasharray',circ);
+  el.setAttribute('stroke-dashoffset',circ*(1-pct));
+}
+
+/* ============================================================
+   设置弹窗
+============================================================ */
+function toggleSettings(){
+  const m=document.getElementById('settingsModal');
+  m.classList.toggle('open');
+}
+
+/* ============================================================
+   Toast
+============================================================ */
+function toast(msg){
+  const old=document.querySelector('.toast');
+  if(old) old.remove();
+  const t=document.createElement('div');
+  t.className='toast';t.textContent=msg;
+  document.body.appendChild(t);
+  setTimeout(()=>t.remove(),2000);
+}
+
+/* ============================================================
+   启动
+============================================================ */
+loadSettings();
+loadProgress();
+initF('all');
+rFlash();
+
+</script>
+</body>
+</html>
