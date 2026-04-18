@@ -1,25 +1,21 @@
 {
-  "name": "IPSLE 英语备考",
-  "short_name": "IPSLE备考",
-  "description": "400词汇 · 100语法题 · 10篇范文 · 写作模板",
+  "name": "PET 单词卡",
+  "short_name": "PET单词",
+  "description": "英伦学院风 PET 备考单词卡",
   "start_url": "/",
   "display": "standalone",
-  "orientation": "portrait",
-  "background_color": "#ffffff",
-  "theme_color": "#0071e3",
-  "lang": "zh-CN",
+  "background_color": "#1e3a2f",
+  "theme_color": "#1e3a2f",
   "icons": [
     {
-      "src": "/icons/icon-192.png",
+      "src": "icons/icon-192x192.png",
       "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/png"
     },
     {
-      "src": "/icons/icon-512.png",
+      "src": "icons/icon-512x512.png",
       "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/png"
     }
   ]
 }
