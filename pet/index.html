@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>PET 备考 · Cambridge B1 Preliminary · 单词卡</title>
+<title>PET 备考 · Cambridge B1 Preliminary</title>
 <meta name="theme-color" content="#1e3a2f">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -475,6 +475,390 @@ body{
 }
 .seg-btn.active{background:var(--ink);color:var(--parchment)}
 
+/* ── 底部 TAB BAR ── */
+.tabbar{
+  position:fixed;bottom:0;left:50%;transform:translateX(-50%);
+  width:100%;max-width:480px;
+  background:linear-gradient(180deg,var(--ink-2) 0%,var(--ink) 100%);
+  border-top:3px solid var(--gold);
+  padding:8px 8px calc(8px + env(safe-area-inset-bottom));
+  display:grid;grid-template-columns:repeat(4,1fr);gap:2px;
+  z-index:1500;
+  box-shadow:0 -4px 16px rgba(30,58,47,0.25);
+}
+.tabbtn{
+  background:transparent;border:none;color:var(--parchment);
+  padding:6px 4px;cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;gap:3px;
+  -webkit-tap-highlight-color:transparent;
+  border-radius:8px;transition:background 0.15s;
+  opacity:0.65;
+}
+.tabbtn.on{
+  opacity:1;color:var(--gold);
+  background:rgba(201,169,97,0.12);
+}
+.tabbtn:active{transform:scale(0.94)}
+.tab-icon{font-size:18px;line-height:1}
+.tab-label{
+  font-family:'Playfair Display',serif;
+  font-size:9px;font-weight:700;letter-spacing:1.5px;
+  text-transform:uppercase;
+}
+
+/* ── PAGES (各模块共用) ── */
+.page{display:none}
+.page.active{display:block}
+
+/* ── 语法题：题目卡 ── */
+.gram-topic{
+  display:grid;grid-template-columns:1fr 1fr;gap:10px;
+  margin-bottom:18px;
+}
+.gram-topic-card{
+  background:var(--cream);border:2px solid var(--ink);
+  border-radius:var(--radius);padding:14px 12px;cursor:pointer;
+  position:relative;transition:transform 0.15s;
+  -webkit-tap-highlight-color:transparent;
+  text-align:left;
+}
+.gram-topic-card:active{transform:scale(0.97)}
+.gram-topic-card::before{
+  content:'';position:absolute;inset:3px;
+  border:1px solid var(--gold);
+  border-radius:calc(var(--radius) - 3px);
+  pointer-events:none;
+}
+.gtc-title{
+  font-family:'Playfair Display',serif;
+  font-size:14px;font-weight:900;color:var(--ink);
+  margin-bottom:4px;position:relative;z-index:1;
+}
+.gtc-sub{
+  font-size:10px;color:var(--text-2);font-weight:600;
+  letter-spacing:1px;text-transform:uppercase;position:relative;z-index:1;
+}
+.gtc-prog{
+  font-size:11px;color:var(--wine);font-weight:700;margin-top:6px;
+  position:relative;z-index:1;
+}
+
+.qcard{
+  background:var(--cream);border:2px solid var(--ink);
+  border-radius:var(--radius-lg);padding:22px 20px;
+  position:relative;margin-bottom:14px;
+  box-shadow:var(--shadow-card);
+}
+.qcard::before{
+  content:'';position:absolute;inset:5px;
+  border:1px solid var(--gold);
+  border-radius:calc(var(--radius-lg) - 5px);
+  pointer-events:none;
+}
+.qmeta{
+  font-family:'Playfair Display',serif;
+  font-size:10px;color:var(--wine);font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;
+  margin-bottom:10px;position:relative;z-index:1;
+}
+.qstem{
+  font-family:'Lora',serif;font-size:16px;
+  color:var(--text);line-height:1.5;font-weight:600;
+  margin-bottom:16px;position:relative;z-index:1;
+}
+.qstem .blank{
+  display:inline-block;min-width:50px;padding:0 6px;
+  border-bottom:2px solid var(--wine);
+  text-align:center;font-weight:700;color:var(--wine);
+  font-style:italic;
+}
+.qopts{display:flex;flex-direction:column;gap:8px;position:relative;z-index:1}
+.qopt{
+  background:var(--parchment);border:1.5px solid var(--border);
+  border-radius:10px;padding:11px 14px;
+  font-family:'Lora',serif;font-size:14px;font-weight:600;
+  color:var(--text);cursor:pointer;
+  display:flex;align-items:center;gap:10px;
+  transition:all 0.15s;-webkit-tap-highlight-color:transparent;
+  text-align:left;
+}
+.qopt:active{transform:scale(0.98)}
+.qopt:hover{border-color:var(--ink);background:var(--cream)}
+.qopt-letter{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:24px;height:24px;border-radius:50%;
+  background:var(--ink);color:var(--parchment);
+  font-family:'Playfair Display',serif;
+  font-size:12px;font-weight:900;flex-shrink:0;
+}
+.qopt.right{
+  background:rgba(60,120,80,0.12);border-color:#3c7850;
+  color:#2a5a3a;
+}
+.qopt.right .qopt-letter{background:#3c7850}
+.qopt.wrong{
+  background:rgba(139,38,53,0.1);border-color:var(--wine);
+  color:var(--wine);
+}
+.qopt.wrong .qopt-letter{background:var(--wine)}
+.qopt.disabled{cursor:default;opacity:0.55}
+.qopt.disabled:active{transform:none}
+
+.explain{
+  margin-top:14px;padding:12px 14px;
+  background:var(--parchment-2);border-left:3px solid var(--gold);
+  border-radius:6px;
+  font-family:'Lora',serif;font-size:13px;line-height:1.55;
+  color:var(--text);position:relative;z-index:1;
+}
+.explain-label{
+  font-family:'Playfair Display',serif;
+  font-size:10px;color:var(--wine);font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;
+}
+
+.qnav{
+  display:grid;grid-template-columns:1fr 2fr;gap:10px;
+  margin-top:6px;
+}
+
+/* 题号小球 */
+.qcounter{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:12px;
+}
+.qnum{
+  font-family:'Playfair Display',serif;
+  font-size:13px;font-weight:700;color:var(--ink);
+  letter-spacing:1px;
+}
+.qscore{
+  font-family:'Lora',serif;font-size:12px;
+  color:var(--text-2);font-weight:600;
+}
+
+/* ── 范文模块 ── */
+.essay-list{display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
+.essay-card{
+  background:var(--cream);border:2px solid var(--ink);
+  border-radius:var(--radius);padding:14px 16px;
+  cursor:pointer;position:relative;
+  transition:transform 0.15s;
+  -webkit-tap-highlight-color:transparent;
+  text-align:left;
+}
+.essay-card:active{transform:scale(0.98)}
+.essay-card::before{
+  content:'';position:absolute;inset:3px;
+  border:1px solid var(--gold);
+  border-radius:calc(var(--radius) - 3px);
+  pointer-events:none;
+}
+.essay-type{
+  display:inline-block;font-family:'Playfair Display',serif;
+  font-size:9px;font-weight:900;letter-spacing:2px;
+  padding:2px 8px;border-radius:10px;
+  margin-bottom:6px;position:relative;z-index:1;
+}
+.essay-type.email{background:var(--ink);color:var(--parchment)}
+.essay-type.article{background:var(--wine);color:var(--parchment)}
+.essay-topic{
+  font-family:'Playfair Display',serif;font-weight:900;
+  font-size:15px;color:var(--ink);margin-bottom:4px;
+  position:relative;z-index:1;
+}
+.essay-cn{
+  font-size:12px;color:var(--text-2);font-style:italic;
+  margin-bottom:8px;position:relative;z-index:1;
+}
+.essay-tags{
+  display:flex;flex-wrap:wrap;gap:4px;position:relative;z-index:1;
+}
+.essay-tag{
+  font-size:10px;padding:2px 8px;border-radius:10px;
+  background:var(--parchment-2);color:var(--text-2);
+  border:1px solid var(--border);font-weight:600;
+}
+
+.essay-detail{
+  background:var(--cream);border:2px solid var(--ink);
+  border-radius:var(--radius-lg);padding:20px 18px;
+  position:relative;box-shadow:var(--shadow-card);
+  margin-bottom:14px;
+}
+.essay-detail::before{
+  content:'';position:absolute;inset:5px;
+  border:1px solid var(--gold);
+  border-radius:calc(var(--radius-lg) - 5px);
+  pointer-events:none;
+}
+.essay-detail-content{position:relative;z-index:1}
+.essay-h1{
+  font-family:'Playfair Display',serif;
+  font-size:18px;font-weight:900;color:var(--ink);
+  margin-bottom:4px;
+}
+.essay-h2{
+  font-size:12px;color:var(--text-2);font-style:italic;
+  margin-bottom:14px;
+}
+.essay-prompt{
+  background:var(--parchment-2);border-left:3px solid var(--wine);
+  padding:10px 12px;border-radius:6px;margin-bottom:14px;
+  font-family:'Lora',serif;font-size:12px;color:var(--text);
+  line-height:1.5;
+}
+.essay-prompt-label{
+  font-family:'Playfair Display',serif;
+  font-size:10px;color:var(--wine);font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;
+}
+.essay-body p{
+  font-family:'Lora',serif;font-size:14px;
+  line-height:1.7;color:var(--text);
+  margin-bottom:10px;
+}
+.essay-tip{
+  margin-top:14px;padding:12px 14px;
+  background:rgba(201,169,97,0.12);border:1px dashed var(--gold-2);
+  border-radius:8px;
+  font-family:'Lora',serif;font-size:12px;line-height:1.55;
+  color:var(--text);font-style:italic;
+}
+.essay-tip-label{
+  font-family:'Playfair Display',serif;font-style:normal;
+  font-size:10px;color:var(--wine);font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;
+}
+
+.memo-tabs{
+  display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;
+  margin-bottom:14px;position:relative;z-index:1;
+}
+.memo-tab{
+  background:var(--parchment);border:1.5px solid var(--border);
+  font-family:'Playfair Display',serif;
+  font-size:11px;font-weight:700;color:var(--text-2);
+  padding:7px 4px;border-radius:8px;cursor:pointer;
+  letter-spacing:1px;text-transform:uppercase;
+  -webkit-tap-highlight-color:transparent;
+}
+.memo-tab.on{background:var(--ink);color:var(--parchment);border-color:var(--ink)}
+.memo-tab:active{transform:scale(0.96)}
+
+.memo-para{
+  background:var(--parchment);border:1.5px solid var(--border);
+  border-radius:8px;padding:12px 14px;margin-bottom:8px;
+  font-family:'Lora',serif;font-size:14px;line-height:1.7;
+  color:var(--text);position:relative;
+  transition:border-color 0.2s;
+}
+.memo-para.hidden-para{
+  color:transparent;background:var(--border);
+  cursor:pointer;user-select:none;
+}
+.memo-para.hidden-para::after{
+  content:'点击揭示';
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  font-family:'Playfair Display',serif;
+  font-size:11px;color:var(--text-2);font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;
+}
+.blank-word{
+  display:inline-block;background:var(--ink);color:var(--ink);
+  border-radius:4px;padding:0 4px;margin:0 1px;cursor:pointer;
+  user-select:none;border:1px solid var(--gold);
+  transition:all 0.15s;
+}
+.blank-word.shown{
+  background:var(--gold);color:var(--text);
+}
+
+.back-btn{
+  background:transparent;border:none;
+  color:var(--ink);font-family:'Lora',serif;
+  font-size:13px;font-weight:700;cursor:pointer;
+  margin-bottom:12px;padding:4px 0;
+  display:inline-flex;align-items:center;gap:4px;
+}
+.back-btn:hover{color:var(--wine)}
+
+/* ── 学习报告 ── */
+.report-stats{
+  display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px;
+}
+.stat-card{
+  background:var(--cream);border:2px solid var(--ink);
+  border-radius:var(--radius);padding:16px 14px;
+  position:relative;
+}
+.stat-card::before{
+  content:'';position:absolute;inset:3px;
+  border:1px solid var(--gold);
+  border-radius:calc(var(--radius) - 3px);
+  pointer-events:none;
+}
+.stat-num{
+  font-family:'Playfair Display',serif;
+  font-size:26px;font-weight:900;color:var(--ink);
+  line-height:1;margin-bottom:4px;position:relative;z-index:1;
+}
+.stat-label{
+  font-size:10px;color:var(--text-2);font-weight:700;
+  letter-spacing:1.5px;text-transform:uppercase;
+  position:relative;z-index:1;
+}
+.stat-sub{
+  font-size:11px;color:var(--wine);font-weight:600;
+  margin-top:4px;position:relative;z-index:1;
+}
+
+.bar-row{
+  display:flex;align-items:center;gap:8px;
+  margin-bottom:10px;
+}
+.bar-day{
+  font-family:'Playfair Display',serif;
+  font-size:10px;font-weight:700;color:var(--text-2);
+  width:32px;letter-spacing:1px;text-transform:uppercase;
+}
+.bar-track{
+  flex:1;height:14px;background:var(--border);border-radius:7px;
+  overflow:hidden;position:relative;
+}
+.bar-fill{
+  height:100%;background:linear-gradient(90deg,var(--ink) 0%,var(--gold-2) 100%);
+  border-radius:7px;transition:width 0.5s ease;
+}
+.bar-num{
+  font-family:'Lora',serif;font-size:11px;font-weight:700;
+  color:var(--ink);width:28px;text-align:right;
+}
+
+.module-card{
+  background:var(--cream);border:2px solid var(--ink);
+  border-radius:var(--radius);padding:14px 16px;
+  margin-bottom:10px;position:relative;
+  display:flex;align-items:center;gap:14px;
+}
+.module-card::before{
+  content:'';position:absolute;inset:3px;
+  border:1px solid var(--gold);
+  border-radius:calc(var(--radius) - 3px);
+  pointer-events:none;
+}
+.module-info{flex:1;position:relative;z-index:1}
+.module-name{
+  font-family:'Playfair Display',serif;
+  font-size:14px;font-weight:900;color:var(--ink);
+}
+.module-desc{font-size:11px;color:var(--text-2);margin-top:2px}
+.module-num{
+  font-family:'Playfair Display',serif;
+  font-size:20px;font-weight:900;color:var(--wine);
+  position:relative;z-index:1;
+}
+
 /* 小屏调整 */
 @media (max-width:360px){
   .fw{font-size:28px}
@@ -496,6 +880,9 @@ body{
   </div>
 
   <div class="scroll-content">
+
+    <!-- ╔══ PAGE 1: 单词卡 ══╗ -->
+    <div class="page active" id="pageFlash">
 
     <!-- HERO 徽章卡 -->
     <div class="hero-card">
@@ -554,8 +941,62 @@ body{
 
     <div id="cardZone"></div>
 
+    </div><!-- /pageFlash -->
+
+    <!-- ╔══ PAGE 2: 语法 ══╗ -->
+    <div class="page" id="pageGram">
+      <div class="hero-card" style="min-height:120px">
+        <div class="hero-text-block">
+          <div class="hero-eyebrow">Grammar · 200 Questions</div>
+          <div class="hero-title">语法精练</div>
+          <div class="hero-sub">Master the rules, master the test.</div>
+        </div>
+      </div>
+      <div id="gramZone"></div>
+    </div>
+
+    <!-- ╔══ PAGE 3: 范文 ══╗ -->
+    <div class="page" id="pageEssay">
+      <div class="hero-card" style="min-height:120px">
+        <div class="hero-text-block">
+          <div class="hero-eyebrow">Writing · Email & Article</div>
+          <div class="hero-title">范文背诵</div>
+          <div class="hero-sub">Read aloud. Memorise. Master.</div>
+        </div>
+      </div>
+      <div id="essayZone"></div>
+    </div>
+
+    <!-- ╔══ PAGE 4: 报告 ══╗ -->
+    <div class="page" id="pageReport">
+      <div class="hero-card" style="min-height:120px">
+        <div class="hero-text-block">
+          <div class="hero-eyebrow">Weekly Report</div>
+          <div class="hero-title">学习报告</div>
+          <div class="hero-sub">Every effort counts.</div>
+        </div>
+      </div>
+      <div id="reportZone"></div>
+    </div>
+
   </div>
-</div>
+
+  <!-- 底部 Tab -->
+  <div class="tabbar">
+    <button class="tabbtn on" data-page="pageFlash" onclick="switchPage('pageFlash')">
+      <span class="tab-icon">📖</span><span class="tab-label">Words</span>
+    </button>
+    <button class="tabbtn" data-page="pageGram" onclick="switchPage('pageGram')">
+      <span class="tab-icon">✦</span><span class="tab-label">Grammar</span>
+    </button>
+    <button class="tabbtn" data-page="pageEssay" onclick="switchPage('pageEssay')">
+      <span class="tab-icon">✒</span><span class="tab-label">Essays</span>
+    </button>
+    <button class="tabbtn" data-page="pageReport" onclick="switchPage('pageReport')">
+      <span class="tab-icon">⚜</span><span class="tab-label">Report</span>
+    </button>
+  </div>
+</div><!-- /wrap -->
 
 <!-- 设置弹窗 -->
 <div class="settings-modal" id="settingsModal" onclick="if(event.target===this)toggleSettings()">
@@ -1251,8 +1692,375 @@ document.addEventListener('touchmove',()=>{clearTimeout(_lpT);_rmTip();},{passiv
 document.addEventListener('click',_rmTip);
 
 /* ============================================================
-   状态管理
+   ╔═════════════════════════════════════════════════╗
+   ║          PET 语法题库 · 200 道 B1 级别           ║
+   ╚═════════════════════════════════════════════════╝
+   按 PET 考纲 10 个核心语法点分组，每组 20 题
+   格式：[题干, [4个选项], 正确索引, 中文讲解]
 ============================================================ */
+const GRAMMAR_TOPICS=[
+  {id:'tense',name:'Tenses',cn:'时态',desc:'现在/过去/将来'},
+  {id:'passive',name:'Passive',cn:'被动语态',desc:'be + V3'},
+  {id:'modal',name:'Modals',cn:'情态动词',desc:'can/must/should'},
+  {id:'conditional',name:'Conditionals',cn:'条件句',desc:'if 三种'},
+  {id:'relative',name:'Relative',cn:'关系从句',desc:'who/which/that'},
+  {id:'reported',name:'Reported',cn:'间接引语',desc:'said/told'},
+  {id:'gerund',name:'Gerund/Infin.',cn:'动名词与不定式',desc:'-ing / to V'},
+  {id:'prep',name:'Prepositions',cn:'介词',desc:'in/on/at...'},
+  {id:'compare',name:'Comparison',cn:'比较级',desc:'-er/more/most'},
+  {id:'article',name:'Articles',cn:'冠词限定词',desc:'a/an/the/some'},
+];
+
+const GQ={
+tense:[
+['She _____ to school every day.',['walk','walks','is walking','walked'],1,'第三人称单数 (she/he/it) 一般现在时：动词加 -s。'],
+['Look! It _____ outside.',['rains','is raining','rain','rained'],1,'Look! 提示正在发生，用现在进行时 is + V-ing。'],
+['I _____ my homework when Mum came home.',['do','was doing','did','have done'],1,'过去某时刻正在做的动作，用过去进行时 was/were + V-ing。'],
+['We _____ in this town since 2018.',['live','are living','have lived','lived'],2,'since + 时间点，用现在完成时 have/has + V3。'],
+['He _____ Paris three times.',['visits','visited','has visited','was visiting'],2,'表示到目前为止的次数/经验，用现在完成时。'],
+['By the time we arrived, the film _____.',['started','has started','had started','was starting'],2,'过去某动作之前已完成，用过去完成时 had + V3。'],
+['Tomorrow I _____ my grandparents.',['visit','visited','am visiting','have visited'],2,'已计划好的将来安排，常用现在进行时。'],
+['Water _____ at 100 degrees Celsius.',['boil','boils','is boiling','boiled'],1,'科学事实用一般现在时；第三单数 boils。'],
+['She _____ a book at the moment.',['reads','is reading','read','was reading'],1,'at the moment = 此刻，用现在进行时。'],
+['When I was a child, I _____ in the countryside.',['live','am living','lived','have lived'],2,'When I was a child 表过去，用一般过去时。'],
+['I _____ my keys. Have you seen them?',['lose','am losing','have lost','lost'],2,'结果对现在有影响（钥匙现在仍找不到），用现在完成时。'],
+['She _____ tennis every Saturday.',['plays','is playing','played','has played'],0,'every Saturday 表习惯性动作，用一般现在时。'],
+['The train _____ at 6 p.m.',['leaves','is leaving','left','has left'],0,'时刻表用一般现在时，即使指将来。'],
+['He _____ TV when the phone rang.',['watches','was watching','watched','has watched'],1,'rang 是过去某时刻，被打断的动作用过去进行时。'],
+['I _____ never _____ such a beautiful sunset.',['have/seen','did/see','was/seeing','am/seeing'],0,'never 强调到目前为止的经历，用现在完成时 have + V3。'],
+['She _____ English for five years.',['studies','is studying','has studied','studied'],2,'for + 时段，从过去持续到现在，用现在完成时。'],
+['Next summer, we _____ to Japan.',['go','are going','went','have gone'],1,'已计划好的将来，常用现在进行时。'],
+['Look at those clouds! It _____ rain.',['will','is going to','would','was going to'],1,'有现实证据预测将来，用 be going to。'],
+['When I _____ home, I will call you.',['get','will get','got','am getting'],0,'时间状语从句中，用一般现在时表将来。'],
+['He _____ in this company since 2020.',['works','is working','has worked','worked'],2,'since 2020 + 持续到现在，用现在完成时。'],
+],
+passive:[
+['English _____ in many countries.',['speaks','is spoken','was speaking','has speaking'],1,'被动语态 is + V3；表示英语被人说。'],
+['The cake _____ by my mum yesterday.',['made','was made','is made','has made'],1,'yesterday 表过去，用过去被动 was/were + V3。'],
+['The new bridge _____ next year.',['will build','will be built','is building','built'],1,'将来被动 will be + V3。'],
+['This book _____ by many students.',['reads','is read','was reading','has read'],1,'书是被读，用现在被动 is + V3。'],
+['Our house _____ last summer.',['painted','was painted','is painted','paints'],1,'last summer 表过去，过去被动 was painted。'],
+['My phone _____ now. I cannot use it.',['repairs','is repaired','is being repaired','was repaired'],2,'now 表正在进行，用现在进行被动 is being + V3。'],
+['The window _____ by the strong wind.',['broke','was broken','is broken','has broken'],1,'被风打破，用过去被动 was broken。'],
+['Letters _____ every morning.',['deliver','are delivered','delivered','have delivered'],1,'每天信被送，用一般现在被动 are delivered。'],
+['The cup _____ by the cat.',['knocked over','was knocked over','knocks over','has knocked over'],1,'杯子被猫打翻，用过去被动 was knocked over。'],
+['Football _____ all over the world.',['plays','is played','was playing','plays'],1,'足球被全世界踢，一般现在被动。'],
+['The room _____ when I came in.',['cleaned','was being cleaned','is cleaning','cleans'],1,'我进去时房间正被打扫，过去进行被动 was being + V3。'],
+['These cars _____ in Germany.',['make','are made','make','were making'],1,'车被德国生产，一般现在被动。'],
+['The thief _____ by the police last night.',['caught','was caught','catches','is caught'],1,'last night 表过去，过去被动 was caught。'],
+['A new school _____ in our town next year.',['opens','will open','will be opened','is opened'],2,'下一年新学校将被建/开，将来被动。'],
+['The cake _____ already _____.',['has/eaten','have/been eaten','has/been eaten','was/eaten'],2,'蛋糕已经被吃掉，现在完成被动 has been + V3。'],
+['The classroom _____ every day.',['cleans','is cleaned','was cleaning','has cleaning'],1,'教室每天被打扫，一般现在被动。'],
+['These flowers _____ by my sister.',['grew','were grown','grow','have grown'],1,'被姐姐种的，过去被动 were grown。'],
+['English _____ as a foreign language at our school.',['teaches','is taught','was teaching','has taught'],1,'英语作为外语被教授，一般现在被动。'],
+['The cake _____ in the oven now.',['bakes','is baked','is being baked','has baked'],2,'now 表此刻正在烤，现在进行被动 is being baked。'],
+['The car _____ next week.',['will repair','will be repaired','is repaired','repaired'],1,'下周车将被修，将来被动。'],
+],
+modal:[
+['She _____ speak four languages fluently.',['can','must','should','would'],0,'can 表示能力（会做某事）。'],
+['You _____ wear a uniform at this school.',['can','must','might','could'],1,'must 表必须、强制规定。'],
+['It _____ rain later. Take an umbrella.',['must','might','should','will'],1,'might 表可能性（也许）。'],
+['You _____ smoke in the hospital.',['must not','need not','could not','would not'],0,'must not 表禁止（绝对不可以）。'],
+['You _____ try harder if you want to pass.',['can','should','might','would'],1,'should 表建议（应该）。'],
+['_____ I borrow your pen?',['Must','May','Should','Would'],1,'May I... 用于礼貌请求许可。'],
+['I _____ swim when I was five.',['can','could','must','should'],1,'过去的能力用 could。'],
+['You _____ go now if you want.',['must','can','should','would'],1,'can 表许可（可以）。'],
+['_____ you help me, please?',['Must','Could','Should','May'],1,'Could you...? 是礼貌请求帮忙的常用句式。'],
+['He _____ be tired. He worked all day.',['must','can','should','might'],0,'must 表逻辑推断（一定）。'],
+['You _____ to wear a tie.',['don\'t have','must not','can not','need to'],0,"don't have to 表不必（没必要）。"],
+['She _____ not be at home. The lights are off.',['must','might','should','would'],1,'might not 表可能性的否定（也许不）。'],
+['You _____ finish your dinner before dessert.',['can','must','might','would'],1,'must 表义务（必须）。'],
+['_____ I open the window?',['Must','Shall','Should','Would'],1,'Shall I...? 用于提议（要不要我...）。'],
+['He _____ have left already. His car is gone.',['must','can','should','would'],0,'must have + V3 表对过去的肯定推断（一定已经...）。'],
+['You _____ have told me earlier!',['must','should','can','would'],1,'should have + V3 表对过去的责备（本应该...）。'],
+['_____ you mind closing the door?',['Could','Would','Should','Must'],1,'Would you mind...? 礼貌请求别人做事。'],
+['I _____ rather stay at home tonight.',['will','would','should','must'],1,'would rather 表偏好（宁愿）。'],
+['She _____ be very young — she has grandchildren!',['must','can\'t','should','would'],1,"can't be 表逻辑推断的否定（不可能是）。"],
+['Children _____ play with matches.',['should not','need not','would not','will not'],0,'should not 表不应该（建议性禁止）。'],
+],
+conditional:[
+['If it rains, we _____ at home.',['stay','will stay','would stay','stayed'],1,'第一条件句：If + 现在时, will + V。表真实可能。'],
+['If I _____ rich, I would buy a big house.',['am','was','were','will be'],2,'第二条件句虚拟用 were（任何人称）。'],
+['If she _____ harder, she would have passed.',['studies','studied','had studied','would study'],2,'第三条件句虚拟过去：If + 过去完成, would have + V3。'],
+['If you heat ice, it _____.',['melts','will melt','would melt','melted'],0,'零条件句：科学事实，两个分句都用一般现在时。'],
+['If I had more time, I _____ travel more.',['will','would','must','should'],1,'第二条件句：if + 过去时, would + V。'],
+['If we _____ now, we will catch the bus.',['leave','left','had left','will leave'],0,'第一条件句 if 从句用一般现在时。'],
+['If I were you, I _____ apologise.',['will','would','must','should'],1,'第二条件句虚拟，主句用 would + V。'],
+['If he had called, I _____ helped him.',['will have','would have','would','must have'],1,'第三条件句虚拟过去，主句 would have + V3。'],
+['You will be late if you _____ now.',['don\'t leave','won\'t leave','didn\'t leave','hadn\'t left'],0,'第一条件句 if 从句用一般现在时（don\'t leave）。'],
+['What would you do if you _____ a million dollars?',['have','had','will have','would have'],1,'第二条件句虚拟，if 从句用一般过去时。'],
+['Unless you hurry, you _____ miss the train.',['will','would','must','can'],0,'unless = if not，等同第一条件句。'],
+['If she _____ me earlier, I could have helped.',['told','had told','tells','would tell'],1,'第三条件句虚拟过去，if 从句用过去完成时。'],
+['If you press this button, the machine _____.',['stops','will stop','would stop','stopped'],0,'零条件句：机械原理，两边都用一般现在时。'],
+['If I had known, I _____.',['will come','would come','would have come','came'],2,'第三条件句虚拟过去，主句 would have + V3。'],
+['He _____ if he had a chance.',['will travel','would travel','traveled','had travelled'],1,'第二条件句虚拟，主句 would + V。'],
+['If the weather _____ nice tomorrow, we will go.',['is','will be','would be','was'],0,'第一条件句 if 从句用一般现在时表将来。'],
+['If only I _____ taller!',['am','was','were','will be'],2,'If only 后用虚拟，第二条件句用 were。'],
+['I would have come if you _____ me.',['invited','had invited','have invited','invite'],1,'第三条件句，if 从句用过去完成时。'],
+['Provided that you _____ hard, you will succeed.',['work','will work','worked','had worked'],0,'provided that = if，从句用一般现在时。'],
+['If she had practised, she _____ better now.',['plays','would play','will play','played'],1,'混合条件句：过去未做导致现在，主句用 would + V。'],
+],
+relative:[
+['The girl _____ won the prize is my sister.',['who','which','where','whose'],0,'修饰人用 who（也可用 that）。'],
+['This is the book _____ I borrowed yesterday.',['who','which','where','when'],1,'修饰物用 which（也可用 that）。'],
+['That is the house _____ I was born.',['which','that','where','who'],2,'修饰地点 + 在地点里发生的事件，用 where。'],
+['The man _____ car is red is my uncle.',['who','which','whose','where'],2,'表所属（他的车），用 whose。'],
+['I remember the day _____ we first met.',['where','when','which','who'],1,'修饰时间，用 when。'],
+['The film _____ we watched was excellent.',['who','which','where','whose'],1,'修饰物（电影），用 which 或 that。'],
+['Do you know the woman _____ is talking to John?',['who','which','where','whose'],0,'修饰人，用 who。'],
+['The reason _____ he left is unknown.',['where','why','which','that'],1,'修饰 reason 后表原因，用 why。'],
+['The hotel _____ we stayed was clean.',['who','which','where','whose'],2,'修饰地点（酒店），用 where。'],
+['I have a friend _____ lives in London.',['who','which','where','whose'],0,'修饰人（friend），用 who。'],
+['The girl _____ I met was very kind.',['who','which','where','whose'],0,'修饰人作宾语，用 who/whom（也可省略）。'],
+['This is the cake _____ I baked.',['who','which','where','whose'],1,'修饰物（cake），用 which 或 that。'],
+['The teacher _____ teaches us maths is strict.',['who','which','where','whose'],0,'修饰人作主语，用 who。'],
+['The shop _____ I bought this is closed.',['who','which','where','whose'],2,'修饰地点（shop），用 where。'],
+['He has a son _____ name is Tom.',['who','which','whose','where'],2,'表所属（儿子的名字），用 whose。'],
+['Summer is the season _____ I like best.',['where','when','which','who'],2,'修饰物（season）作宾语，用 which/that。'],
+['That\'s the boy _____ broke the window.',['who','which','where','whose'],0,'修饰人作主语，用 who。'],
+['The bag _____ is on the table is mine.',['who','which','where','whose'],1,'修饰物（包），用 which/that。'],
+['Do you remember the year _____ we moved here?',['where','when','which','who'],1,'修饰时间（年份），用 when。'],
+['She is the singer _____ songs are popular.',['who','which','whose','where'],2,'表所属（她的歌），用 whose。'],
+],
+reported:[
+['He said he _____ tired.',['is','was','has been','will be'],1,'间接引语：直接引语现在时变过去时。'],
+['She told me she _____ leave the next day.',['will','would','can','could'],1,'间接引语：will 变 would。'],
+['He asked me where I _____.',['live','lived','had lived','will live'],1,'间接引语疑问句：现在时变过去时；语序变陈述。'],
+['She said she _____ him before.',['met','has met','had met','meets'],2,'间接引语：现在完成时变过去完成时。'],
+['He told me _____ worry.',['don\'t','not to','to not','no to'],1,'间接祈使句否定形式：not to + V。'],
+['She asked me if I _____ help her.',['can','could','will','must'],1,'间接引语：can 变 could。'],
+['He said he _____ never been there.',['has','was','had','have'],2,'间接引语：现在完成时 has been 变过去完成时 had been。'],
+['She told me she _____ Chinese.',['speaks','spoke','has spoken','will speak'],1,'间接引语：一般现在时变一般过去时。'],
+['He asked what time it _____.',['is','was','has been','will be'],1,'间接特殊疑问句：现在时变过去时。'],
+['She said she _____ tomorrow.',['will come','would come','came','had come'],1,'间接引语：will 变 would；时间词不需要变。'],
+['He asked if I _____ him.',['saw','had seen','will see','see'],1,'间接一般疑问句用 if/whether；过去时变过去完成时。'],
+['She told me she _____ doing her homework.',['is','was','has been','will be'],1,'间接引语：现在进行时 is doing 变 was doing。'],
+['He said he _____ go to the party.',['can\'t','couldn\'t','won\'t','wouldn\'t'],1,'间接引语：can\'t 变 couldn\'t。'],
+['She asked me where I _____ from.',['come','came','have come','had come'],1,'间接特殊疑问句：现在时变过去时。'],
+['He told me _____ quiet.',['be','to be','being','been'],1,'间接祈使句：to + V 原形。'],
+['She said she _____ never seen snow.',['has','was','had','have'],2,'间接引语：现在完成时变过去完成时 had。'],
+['He asked if I _____ ready.',['am','was','will be','have been'],1,'间接一般疑问句：现在时变过去时。'],
+['She told us not _____ late.',['be','being','to be','been'],2,'间接祈使句否定：not to + V。'],
+['He said the train _____ at six.',['leaves','left','had left','will leave'],1,'间接引语：现在时变过去时（即使时刻表）。'],
+['She asked me what I _____ at the weekend.',['do','did','will do','am doing'],1,'间接特殊疑问句：现在时变过去时。'],
+],
+gerund:[
+['I enjoy _____ books.',['read','to read','reading','reads'],2,'enjoy 后接动名词 V-ing。'],
+['She wants _____ a doctor.',['be','to be','being','been'],1,'want 后接不定式 to + V。'],
+['He is good at _____ chess.',['play','to play','playing','plays'],2,'介词后接动名词 V-ing。'],
+['I would like _____ a coffee.',['have','to have','having','had'],1,'would like 后接不定式 to + V。'],
+['Stop _____! It\'s annoying.',['talk','to talk','talking','talks'],2,'stop + V-ing 表示停止做某事。'],
+['He decided _____ home.',['go','to go','going','went'],1,'decide 后接不定式 to + V。'],
+['I look forward to _____ from you.',['hear','to hear','hearing','heard'],2,'look forward to 中 to 是介词，后接 V-ing。'],
+['She avoided _____ him.',['meet','to meet','meeting','met'],2,'avoid 后接动名词 V-ing。'],
+['It started _____ heavily.',['rain','to rain','raining','rained'],1,'start 后可接 to + V 或 V-ing，此处选 to rain。'],
+['Do you mind _____ the door?',['close','to close','closing','closed'],2,'mind 后接动名词 V-ing。'],
+['I forgot _____ the door.',['lock','to lock','locking','locked'],1,'forget to + V 表忘记要做的事；forget V-ing 表忘记做过的事。'],
+['He suggested _____ a film.',['watch','to watch','watching','watched'],2,'suggest 后接动名词 V-ing。'],
+['I hope _____ you soon.',['see','to see','seeing','saw'],1,'hope 后接不定式 to + V。'],
+['She finished _____ her work.',['do','to do','doing','done'],2,'finish 后接动名词 V-ing。'],
+['He promised _____ on time.',['come','to come','coming','came'],1,'promise 后接不定式 to + V。'],
+['I can\'t stand _____ in queues.',['wait','to wait','waiting','waited'],2,"can't stand 后接动名词 V-ing。"],
+['It\'s difficult _____ English.',['learn','to learn','learning','learned'],1,'It is + adj + to + V 句型。'],
+['Thank you for _____ me.',['help','to help','helping','helped'],2,'介词 for 后接动名词 V-ing。'],
+['She agreed _____ with us.',['come','to come','coming','came'],1,'agree 后接不定式 to + V。'],
+['I am interested in _____ Chinese.',['learn','to learn','learning','learned'],2,'介词 in 后接动名词 V-ing。'],
+],
+prep:[
+['I was born _____ May.',['in','on','at','of'],0,'月份前用 in。'],
+['The meeting is _____ Monday.',['in','on','at','of'],1,'星期前用 on。'],
+['School starts _____ 8 o\'clock.',['in','on','at','of'],2,'具体钟点前用 at。'],
+['She lives _____ London.',['in','on','at','of'],0,'城市/国家前用 in。'],
+['The book is _____ the table.',['in','on','at','of'],1,'物体表面接触用 on。'],
+['He is good _____ maths.',['in','on','at','of'],2,'be good at + 学科/技能（固定搭配）。'],
+['I am afraid _____ spiders.',['in','on','at','of'],3,'be afraid of（固定搭配，怕某物）。'],
+['We arrived _____ the airport early.',['in','on','at','of'],2,'arrive at + 较小地点（火车站、机场）。'],
+['She is married _____ a doctor.',['with','to','at','of'],1,'be married to sb（固定搭配）。'],
+['Don\'t laugh _____ me!',['on','of','at','to'],2,'laugh at sb（嘲笑某人）。'],
+['I agree _____ you.',['with','to','at','of'],0,'agree with sb（同意某人）。'],
+['He is interested _____ science.',['in','on','at','of'],0,'be interested in（固定搭配）。'],
+['The cat jumped _____ the chair.',['onto','into','at','of'],0,'跳到某物上面用 onto。'],
+['She walked _____ the room quietly.',['in','into','on','at'],1,'走进房间用 into（强调动作方向）。'],
+['I have lived here _____ ten years.',['since','for','from','at'],1,'for + 时段。'],
+['I have known him _____ 2018.',['since','for','from','at'],0,'since + 时间点。'],
+['The shop is _____ the bank and the post office.',['among','between','at','in'],1,'两者之间用 between。'],
+['She arrived _____ Beijing late at night.',['at','to','in','on'],2,'arrive in + 大地点（城市/国家）；arrive at + 小地点（车站/机场）。'],
+['He is afraid _____ flying.',['in','on','at','of'],3,'be afraid of + V-ing。'],
+['Look _____ the picture.',['at','on','in','to'],0,'look at（注视）。'],
+['She is good _____ singing.',['in','on','at','of'],2,'be good at + V-ing（固定搭配）。'],
+],
+compare:[
+['She is _____ than her sister.',['tall','taller','tallest','more tall'],1,'比较级单音节 + er：tall → taller。'],
+['This is _____ book I have ever read.',['interesting','more interesting','the most interesting','interestinger'],2,'最高级多音节用 the most + adj。'],
+['He runs _____ than me.',['fast','faster','fastest','more fast'],1,'比较级单音节 + er：fast → faster。'],
+['Maths is _____ than English for me.',['difficult','more difficult','most difficult','difficulter'],1,'比较级多音节用 more + adj。'],
+['She is the _____ student in the class.',['cleverest','most clever','more clever','clever'],0,'最高级 clever 可用 cleverest 或 most clever，常用 cleverest。'],
+['This box is _____ as that one.',['heavy','heavier','as heavy','heaviest'],2,'as + 原级 + as（同级比较）。'],
+['Today is _____ than yesterday.',['hot','hotter','hottest','more hot'],1,'比较级 hot → hotter（双写最后一个辅音）。'],
+['He is _____ boy in the school.',['tall','taller','the tallest','more tall'],2,'最高级 tall → the tallest。'],
+['This question is _____ that one.',['easier than','easier as','more easy than','easyer than'],0,'比较级 easy → easier，加 than。'],
+['She speaks English _____ than her brother.',['well','better','best','more well'],1,'well 的比较级是 better（不规则）。'],
+['This film is _____ than that one.',['good','better','best','more good'],1,'good 的比较级是 better（不规则）。'],
+['He has _____ books than me.',['many','much','more','most'],2,'比较级 many/much → more。'],
+['She sings _____ in our class.',['beautifully','more beautifully','most beautifully','the most beautifully'],3,'最高级副词多音节：the most + adv。'],
+['It\'s _____ day of the year.',['hot','hotter','the hottest','more hot'],2,'最高级 hot → the hottest（双写）。'],
+['My bag is not _____ as yours.',['heavy','heavier','as heavy','heaviest'],2,'否定的同级比较：not as + 原级 + as。'],
+['He is _____ than I expected.',['kind','kinder','kindest','more kind'],1,'比较级单音节 + er：kind → kinder。'],
+['She is the _____ of the three sisters.',['young','younger','youngest','more young'],2,'最高级 young → the youngest。'],
+['This exercise is _____ than the last one.',['easy','easier','easiest','more easy'],1,'比较级 easy → easier。'],
+['He works _____ his colleagues.',['hard than','harder than','hardest','more hard than'],1,'副词 hard 的比较级是 harder。'],
+['Of all the cakes, this is _____.',['delicious','more delicious','the most delicious','deliciouser'],2,'最高级多音节：the most + adj。'],
+],
+article:[
+['I have _____ apple.',['a','an','the','/'],1,'apple 以元音音 /æ/ 开头，用 an。'],
+['She is _____ honest girl.',['a','an','the','/'],1,'honest 中 h 不发音，元音音开头，用 an。'],
+['The sun rises in _____ east.',['a','an','the','/'],2,'独一无二的事物前用 the。'],
+['He plays _____ piano very well.',['a','an','the','/'],2,'乐器名词前用 the：play the piano。'],
+['I go to school by _____ bus.',['a','an','the','/'],3,'by + 交通工具，前面不加冠词。'],
+['_____ Earth goes around the sun.',['A','An','The','/'],2,'独一无二的天体名词前用 the。'],
+['She is _____ teacher.',['a','an','the','/'],0,'职业名词前用 a/an，teacher 辅音音开头用 a。'],
+['_____ Chinese are friendly.',['A','An','The','/'],2,'the + 国家形容词 = 全体国民。'],
+['I had _____ breakfast at 7.',['a','an','the','/'],3,'三餐前一般不加冠词。'],
+['She plays _____ tennis after school.',['a','an','the','/'],3,'球类、棋类运动前不加冠词。'],
+['_____ rich should help _____ poor.',['A/an','The/the','/ /','An/the'],1,'the + 形容词 = 一类人（the rich, the poor）。'],
+['He is _____ best student in our class.',['a','an','the','/'],2,'最高级前用 the。'],
+['I bought _____ book yesterday. _____ book is interesting.',['A/A','A/The','The/A','An/An'],1,'第一次提及用 a，再次提及用 the。'],
+['_____ Mount Fuji is in Japan.',['A','An','The','/'],3,'山峰名词通常不加冠词（Mount Fuji, Mount Everest）。'],
+['I usually go to bed _____ at 10 pm.',['the','a','an','/'],3,'go to bed 是固定搭配，不加冠词。'],
+['She is _____ university student.',['a','an','the','/'],0,'university 以辅音音 /j/ 开头，用 a。'],
+['_____ Yangtze River is the longest in China.',['A','An','The','/'],2,'河流名词前用 the（the Yangtze River, the Nile）。'],
+['I love _____ music.',['a','an','the','/'],3,'抽象名词、不可数名词泛指时不加冠词。'],
+['_____ apple a day keeps the doctor away.',['A','An','The','/'],1,'apple 以元音音开头用 an；表泛指。'],
+['Could you pass me _____ salt?',['a','an','the','/'],2,'特指（饭桌上的盐），用 the。'],
+],
+};
+
+/* ============================================================
+   ╔═════════════════════════════════════════════════╗
+   ║       PET 范文库 · 5 Email + 5 Article           ║
+   ╚═════════════════════════════════════════════════╝
+   按 PET Writing Part 1 (Email) + Part 2 (Article)
+   每篇 100 词左右，体裁标准化
+============================================================ */
+const ESSAYS=[
+{type:'email',num:'01',topic:'Inviting a Friend to a Party',cn:'邀请朋友参加聚会',
+prompt:'You are going to have a birthday party. Write an email to your English friend Sam. Invite Sam to the party. Tell Sam when and where it will be. Explain what to bring.',
+tags:['Part 1','邀请','100 words'],
+body:[
+'Hi Sam,',
+'How are you? I hope you are doing well. I am writing to invite you to my birthday party next weekend. It is going to be really exciting and I would love you to come.',
+'The party will be held at my house on Saturday, the 15th of June, starting at six in the evening. We will have dinner, play some fun games, and watch a film together. My mum is baking a huge chocolate cake, so do not eat too much before you arrive!',
+'If you can come, please bring a small snack to share. There is no need to bring a present. Just come and have fun with us. Let me know soon.',
+'Best wishes,',
+'Alex'
+],tip:'Email 三要素：开头问候 (Hi Sam, How are you?)；中段三件事（when / where / what to bring）按顺序展开；结尾明确呼应行动 (Let me know soon)。注意 Best wishes 这类英式结尾比 Sincerely 更适合朋友信。'},
+
+{type:'email',num:'02',topic:'Replying to a Friend\'s Question',cn:'回复朋友的提问',
+prompt:'Your English friend Jamie has emailed you asking about your school. Reply with information about your school day, your favourite subject, and one school activity.',
+tags:['Part 1','回复','100 words'],
+body:[
+'Hi Jamie,',
+'Thanks for your email. It was lovely to hear from you. I am happy to tell you all about my school.',
+'My school day starts at half past seven in the morning and finishes at three in the afternoon. We have six lessons every day, with a short break at ten and a longer one at lunchtime. The teachers are friendly and the classrooms are bright and warm.',
+'My favourite subject is science because we do experiments almost every week. Last week we grew tiny plants from seeds. I also enjoy our weekly football club, where we practise after school every Tuesday.',
+'Write back soon and tell me about yours!',
+'Lily'
+],tip:'回复信开头要 acknowledge：Thanks for your email / It was lovely to hear from you。三个要点（school day / favourite subject / activity）每段一个，结构清晰。结尾抛回问题 (Write back soon and tell me about yours) 邀请对方回信。'},
+
+{type:'email',num:'03',topic:'Asking for Information about a Trip',cn:'询问旅行信息',
+prompt:'You are planning to visit your English friend Chris next month. Write an email to Chris. Ask about the weather. Ask what clothes to bring. Suggest things to do together.',
+tags:['Part 1','询问','100 words'],
+body:[
+'Hi Chris,',
+'I cannot believe my trip to visit you is only three weeks away! I am so excited and I have a few questions before I pack.',
+'First, what is the weather usually like in your city in October? Here it can still be quite warm, but I have heard England gets rainy and cold.',
+'Second, what kind of clothes should I bring? Will I need a thick coat, or just a jumper and a raincoat? I want to be prepared for everything.',
+'Lastly, I would love to visit a museum and try fish and chips together. Do you have any other suggestions?',
+'See you soon!',
+'Tom'
+],tip:'询问信用 First / Second / Lastly 三个排序词清晰列出问题，比直接提问更礼貌。每个问题给出背景（可以让对方更好回答），如 "Here it can still be quite warm" 帮 Chris 理解你的对比。结尾热情而克制：See you soon!'},
+
+{type:'email',num:'04',topic:'Apologising for Missing an Event',cn:'为缺席事件道歉',
+prompt:'You missed your friend Pat\'s birthday party last weekend. Write an email to apologise. Explain why you could not come. Suggest meeting up another time.',
+tags:['Part 1','道歉','100 words'],
+body:[
+'Hi Pat,',
+'I am so sorry I missed your birthday party last Saturday. I really wanted to be there to celebrate with you, and I feel terrible about not coming.',
+'On Friday evening I started feeling ill. By Saturday morning I had a high fever and a sore throat, and Mum said I had to stay in bed all day. I tried to message you but my phone was dead. I am much better now, but I missed all the fun.',
+'Could we meet up next weekend instead? I would love to give you your present and hear all about the party.',
+'Sorry again,',
+'Sam'
+],tip:'道歉信黄金结构：先表歉意 (I am so sorry)，再给具体原因 (started feeling ill / high fever)，避免空泛借口。proposing alternative (Could we meet up next weekend) 比单纯道歉更显诚意。结尾用 Sorry again 重申。'},
+
+{type:'email',num:'05',topic:'Thanking Someone for a Gift',cn:'感谢礼物',
+prompt:'Your English aunt Helen sent you a present for your birthday. Write an email to thank her. Describe how you felt when you opened it. Tell her how you will use it.',
+tags:['Part 1','感谢','100 words'],
+body:[
+'Dear Aunt Helen,',
+'Thank you so much for the wonderful present you sent me for my birthday. The parcel arrived yesterday morning and I could not wait to open it.',
+'When I unwrapped the box, I was completely amazed. The watercolour paint set is the most beautiful gift I have ever received! The colours are bright and there are so many brushes. I almost cried with happiness.',
+'I am going to use the paints to draw a picture of our garden in spring, when all the flowers are out. As soon as I finish, I will send you a photo. You always know exactly what I love.',
+'Lots of love,',
+'Emma'
+],tip:'感谢信用 Dear + 长辈称呼比 Hi 更得体。具体描述 (watercolour paint set / colours are bright / so many brushes) 比 "I love it" 更有感染力。承诺后续行动 (will send you a photo) 让感谢落地。结尾 Lots of love 用于亲密家人。'},
+
+{type:'article',num:'06',topic:'My Favourite Place in My Town',cn:'我最喜欢的地方',
+prompt:'Your school magazine wants articles about favourite places in your town. Write an article describing your favourite place, why you like it, and when you go there.',
+tags:['Part 2','描述','100 words'],
+body:[
+'My Favourite Place in My Town',
+'Every town has a special place, and mine is the small park behind the library. It may not look like much from the outside, but for me it is the most peaceful spot in the whole world.',
+'The park has tall old trees, a quiet pond with orange fish, and a wooden bench under a cherry tree. In spring the cherry blossoms fall like soft pink snow.',
+'I usually go there on Sunday afternoons with a book and a snack. I read for an hour, then watch the fish swim around. It always makes me feel calm and happy.',
+'If you ever visit my town, please come and see it. You will love it too.'
+],tip:'Article 比 Email 更文学化：开篇用普世共鸣 (Every town has a special place) 拉近读者。具象细节（pond with orange fish / cherry blossoms fall like soft pink snow）比形容词堆砌更打动人。结尾邀请读者 (please come and see it) 是 article 常见温暖收尾。'},
+
+{type:'article',num:'07',topic:'The Best Way to Learn English',cn:'学好英语的最佳方法',
+prompt:'Your English teacher has asked students to write an article about learning English. Write about what helps you most, how often you study, and your advice to other learners.',
+tags:['Part 2','建议','100 words'],
+body:[
+'How I Learn English',
+'Learning a new language is never easy, but I have discovered some habits that really help me improve.',
+'The thing that helps me most is watching English films with subtitles. I write down new words in a small notebook and try to use them the next day. I also listen to English songs on the bus and sing along quietly. It feels less like studying and more like fun.',
+'I practise English for at least thirty minutes every day, even on weekends. Short and regular practice works much better than long sessions once a week.',
+'My advice? Be patient with yourself. Mistakes are part of learning, and every small step matters.'
+],tip:'建议类 Article 三段式：①个人方法 ②频率/数量 ③给读者的建议。具体动作 (write down new words / sing along quietly) 比抽象建议有说服力。结尾用问句 + 短句 (My advice? Be patient...) 制造对话感，PET 评分喜欢这种风格变化。'},
+
+{type:'article',num:'08',topic:'A Memorable School Trip',cn:'难忘的校园旅行',
+prompt:'Your English teacher has asked you to write an article about a school trip you remember well. Describe where you went, what you did, and why it was special.',
+tags:['Part 2','叙事','100 words'],
+body:[
+'A Day I Will Never Forget',
+'Last year, my class went on a trip to a sheep farm in the countryside. I had never been to a real farm before, and the day turned out to be one of the happiest of my life.',
+'When we arrived, the farmer showed us around. We fed baby lambs from a bottle, watched a sheepdog round up the flock, and even tried our hand at sheep shearing. The wool was much warmer and softer than I expected.',
+'At lunchtime we ate sandwiches under a huge oak tree, with sheep grazing all around us.',
+'I will never forget that day because it taught me how peaceful country life can be.'
+],tip:'叙事 Article 用 Last year / When we arrived / At lunchtime 三个时间锚点结构。感官细节 (much warmer and softer than I expected / sheep grazing all around) 比"很有趣"具体百倍。结尾点题 (taught me how peaceful country life can be) 提升立意。'},
+
+{type:'article',num:'09',topic:'My Favourite Book',cn:'我最喜欢的书',
+prompt:'Your school magazine is asking students about books they love. Write an article about your favourite book. Say what it is about, who would enjoy it, and why you recommend it.',
+tags:['Part 2','推荐','100 words'],
+body:[
+'A Book That Changed Me',
+'If you ask me which book I love most, my answer is always the same: "Charlotte\'s Web" by E. B. White. I first read it when I was nine, and I have read it three times since.',
+'The story is about a small pig called Wilbur and a clever spider called Charlotte. Charlotte saves Wilbur\'s life by writing kind words about him in her web. It is a story about friendship, courage, and kindness.',
+'I think anyone aged eight to eighty would enjoy this book. The language is simple but the message is deep.',
+'Read it once, and you will never look at small creatures the same way again.'
+],tip:'书评 Article 三层信息：①书名作者（明确具体）②情节简介（一两句话讲清核心）③推荐人群 + 理由。结尾用 Read it once, and you will never... 这种条件句 + 强承诺，比 "I really recommend it" 高级太多。'},
+
+{type:'article',num:'10',topic:'How I Spend My Weekends',cn:'我如何度过周末',
+prompt:'Your English-speaking friend asked you what you usually do at weekends. Write an article describing your typical weekend, what you enjoy most, and what you sometimes wish you could do.',
+tags:['Part 2','日常','100 words'],
+body:[
+'Weekends in My Life',
+'For me, weekends are the best part of the week. They are short, but every minute feels precious.',
+'On Saturdays I usually wake up late and have a big breakfast with my family. In the afternoon I meet my friends at the basketball court near our school. We play for two hours, then have ice cream together. Sundays are quieter. I read, help my mum cook, and finish my homework.',
+'What I enjoy most is the feeling of having no rush. There are no early alarms, no hurried meals, no pressure.',
+'Sometimes I wish weekends were three days long. But maybe that would make them less special.'
+],tip:'日常类 Article 用 On Saturdays / Sundays / What I enjoy most 平行结构清晰。结尾哲思一转 (Sometimes I wish... But maybe that would make them less special) 是 PET high band 范文常用收尾——给主题加一层反思深度。'},
+];
+
+
 const LS_KEY='pet_flashcard_v1';
 const LS_SET='pet_flashcard_settings_v1';
 
@@ -1280,7 +2088,13 @@ function setAccent(a){settings.accent=a;saveSettings();loadSettings();toast('已
 function setSpeed(s){settings.speed=s;saveSettings();loadSettings();}
 function setAuto(v){settings.auto=v;saveSettings();loadSettings();}
 
-let progress={mastered:new Set(),today:new Set(),lastDate:'',streak:0};
+let progress={
+  mastered:new Set(),today:new Set(),lastDate:'',streak:0,
+  gramAnswered:{},  // {topicId: {qIdx: 'right'|'wrong'}}
+  gramCorrect:0, gramTotal:0,
+  essayRead:new Set(),  // 已学过的范文 num
+  history:{},  // {date: {words:N, gram:N, essay:N}}
+};
 function loadProgress(){
   try{
     const s=localStorage.getItem(LS_KEY);
@@ -1290,11 +2104,15 @@ function loadProgress(){
       progress.today=new Set(p.today||[]);
       progress.lastDate=p.lastDate||'';
       progress.streak=p.streak||0;
+      progress.gramAnswered=p.gramAnswered||{};
+      progress.gramCorrect=p.gramCorrect||0;
+      progress.gramTotal=p.gramTotal||0;
+      progress.essayRead=new Set(p.essayRead||[]);
+      progress.history=p.history||{};
     }
   }catch(e){}
   const today=new Date().toISOString().slice(0,10);
   if(progress.lastDate!==today){
-    // 新的一天，重置 today，更新 streak
     if(progress.today.size>0){
       const prev=progress.lastDate;
       const y=new Date();y.setDate(y.getDate()-1);
@@ -1312,18 +2130,35 @@ function saveProgress(){
       mastered:Array.from(progress.mastered),
       today:Array.from(progress.today),
       lastDate:progress.lastDate,
-      streak:progress.streak
+      streak:progress.streak,
+      gramAnswered:progress.gramAnswered,
+      gramCorrect:progress.gramCorrect,
+      gramTotal:progress.gramTotal,
+      essayRead:Array.from(progress.essayRead),
+      history:progress.history,
     }));
   }catch(e){}
 }
 function resetProgress(){
-  if(!confirm('确定重置所有学习进度吗？')) return;
-  progress={mastered:new Set(),today:new Set(),lastDate:new Date().toISOString().slice(0,10),streak:0};
+  if(!confirm('确定重置所有学习进度吗？（包括单词、语法、范文）')) return;
+  progress={mastered:new Set(),today:new Set(),lastDate:new Date().toISOString().slice(0,10),
+    streak:0,gramAnswered:{},gramCorrect:0,gramTotal:0,essayRead:new Set(),history:{}};
   saveProgress();
   toggleSettings();
   initF(fst.filter);
   rFlash();
+  if(curPage==='pageGram') rGram();
+  if(curPage==='pageEssay') rEssayList();
+  if(curPage==='pageReport') rReport();
   toast('进度已重置');
+}
+
+function logToday(type){
+  // 给今日历史记录 +1
+  const d=progress.lastDate||new Date().toISOString().slice(0,10);
+  if(!progress.history[d]) progress.history[d]={words:0,gram:0,essay:0};
+  progress.history[d][type]=(progress.history[d][type]||0)+1;
+  saveProgress();
 }
 
 /* ============================================================
@@ -1461,6 +2296,7 @@ function markKnown(){
   fst.done.add(ci);
   progress.mastered.add(ci);
   progress.today.add(ci);
+  logToday('words');
   saveProgress();
   fst.flipped=false;
   sfxKnown();
@@ -1535,12 +2371,423 @@ function toast(msg){
 }
 
 /* ============================================================
+   ╔═════════════════════════════════════════════════╗
+   ║                  TAB 切换                         ║
+   ╚═════════════════════════════════════════════════╝
+============================================================ */
+let curPage='pageFlash';
+function switchPage(id){
+  if(window.speechSynthesis) window.speechSynthesis.cancel();
+  document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id===id));
+  document.querySelectorAll('.tabbtn').forEach(b=>b.classList.toggle('on',b.dataset.page===id));
+  curPage=id;
+  sfxFlip();
+  if(id==='pageFlash') rFlash();
+  else if(id==='pageGram') rGram();
+  else if(id==='pageEssay') rEssayList();
+  else if(id==='pageReport') rReport();
+  window.scrollTo(0,0);
+}
+
+/* ============================================================
+   ╔═════════════════════════════════════════════════╗
+   ║              语法模块 · 200 题                    ║
+   ╚═════════════════════════════════════════════════╝
+============================================================ */
+let gramState={topic:null,idx:0,answered:null,score:0,total:0};
+
+function rGram(){
+  const z=document.getElementById('gramZone');
+  if(!gramState.topic){
+    // 主题选择页
+    const cards=GRAMMAR_TOPICS.map(t=>{
+      const ans=progress.gramAnswered[t.id]||{};
+      const done=Object.keys(ans).length;
+      const correct=Object.values(ans).filter(v=>v==='right').length;
+      const total=GQ[t.id]?GQ[t.id].length:0;
+      return `<button class="gram-topic-card" onclick="enterGramTopic('${t.id}')">
+        <div class="gtc-title">${t.name}</div>
+        <div class="gtc-sub">${t.cn}</div>
+        <div class="gtc-prog">${done}/${total}${done?` · ${correct} 对`:''}</div>
+      </button>`;
+    }).join('');
+    z.innerHTML=`
+      <div class="sec-title">Choose a Topic</div>
+      <div class="gram-topic">${cards}</div>
+      <div class="essay-tip" style="margin-top:18px">
+        <div class="essay-tip-label">📜 关于这 200 题</div>
+        每个主题 20 题，覆盖 PET (B1) 写作和阅读最常考的语法点。做错也没关系，可以随时回来重做——错题会保留记录。
+      </div>`;
+    return;
+  }
+  // 题目展示页
+  const topic=GRAMMAR_TOPICS.find(t=>t.id===gramState.topic);
+  const qs=GQ[gramState.topic];
+  if(!qs||gramState.idx>=qs.length){
+    // 完成页
+    const ans=progress.gramAnswered[gramState.topic]||{};
+    const correct=Object.values(ans).filter(v=>v==='right').length;
+    z.innerHTML=`
+      <button class="back-btn" onclick="exitGramTopic()">← 返回主题列表</button>
+      <div class="done-card">
+        <div class="done-crest">⚜</div>
+        <div class="done-title">${topic.name} Complete</div>
+        <div class="done-sub">本组 ${qs.length} 题完成 · 答对 ${correct} 题</div>
+        <div class="action-row">
+          <button class="btn btn-wine" onclick="gramState.idx=0;rGram()">再做一遍</button>
+          <button class="btn btn-ink" onclick="exitGramTopic()">换一组</button>
+        </div>
+      </div>`;
+    sfxDone();
+    return;
+  }
+  const q=qs[gramState.idx];
+  const stem=q[0].replace('_____',`<span class="blank">${gramState.answered!==null?q[1][q[2]]:'_____'}</span>`);
+  const opts=q[1].map((opt,i)=>{
+    let cls='qopt';
+    if(gramState.answered!==null){
+      cls+=' disabled';
+      if(i===q[2]) cls+=' right';
+      else if(i===gramState.answered) cls+=' wrong';
+    }
+    const letter=['A','B','C','D'][i];
+    return `<button class="${cls}" onclick="answerGram(${i})">
+      <span class="qopt-letter">${letter}</span><span>${opt}</span>
+    </button>`;
+  }).join('');
+  const ans=progress.gramAnswered[gramState.topic]||{};
+  const done=Object.keys(ans).length;
+  const correctCount=Object.values(ans).filter(v=>v==='right').length;
+  z.innerHTML=`
+    <button class="back-btn" onclick="exitGramTopic()">← ${topic.cn}</button>
+    <div class="qcounter">
+      <span class="qnum">Question ${gramState.idx+1} / ${qs.length}</span>
+      <span class="qscore">${correctCount} / ${done} 正确</span>
+    </div>
+    <div class="qcard">
+      <div class="qmeta">${topic.name} · ${topic.cn}</div>
+      <div class="qstem">${stem}</div>
+      <div class="qopts">${opts}</div>
+      ${gramState.answered!==null?`
+        <div class="explain">
+          <div class="explain-label">${gramState.answered===q[2]?'✓ 正确':'✗ 解析'}</div>
+          ${q[3]}
+        </div>`:''}
+    </div>
+    ${gramState.answered!==null?`
+      <div class="action-row">
+        <button class="btn btn-ghost" onclick="speak('${q[0].replace('_____',q[1][q[2]]).replace(/'/g,"\\'")}',null)">🔊 朗读</button>
+        <button class="btn btn-ink" onclick="nextGram()">${gramState.idx+1<qs.length?'下一题 →':'查看结果'}</button>
+      </div>`:''}
+  `;
+}
+
+function enterGramTopic(id){
+  gramState.topic=id;
+  gramState.idx=0;
+  gramState.answered=null;
+  sfxFlip();
+  rGram();
+}
+function exitGramTopic(){
+  gramState.topic=null;
+  gramState.idx=0;
+  gramState.answered=null;
+  sfxFlip();
+  rGram();
+}
+function answerGram(i){
+  if(gramState.answered!==null) return;
+  gramState.answered=i;
+  const q=GQ[gramState.topic][gramState.idx];
+  if(!progress.gramAnswered[gramState.topic]) progress.gramAnswered[gramState.topic]={};
+  const correct=(i===q[2]);
+  // 只在第一次记入分数
+  const prev=progress.gramAnswered[gramState.topic][gramState.idx];
+  if(!prev){
+    progress.gramTotal+=1;
+    if(correct) progress.gramCorrect+=1;
+    logToday('gram');
+  }
+  progress.gramAnswered[gramState.topic][gramState.idx]=correct?'right':'wrong';
+  saveProgress();
+  if(correct){sfxKnown();pandaBounce();} else {sfxSkip();}
+  rGram();
+}
+function nextGram(){
+  gramState.idx+=1;
+  gramState.answered=null;
+  rGram();
+}
+
+/* ============================================================
+   ╔═════════════════════════════════════════════════╗
+   ║          范文模块 · Email + Article              ║
+   ╚═════════════════════════════════════════════════╝
+============================================================ */
+let essayState={idx:null,memoMode:0,memoParaIdx:0};
+
+function rEssayList(){
+  const z=document.getElementById('essayZone');
+  const cards=ESSAYS.map((e,i)=>{
+    const isRead=progress.essayRead.has(e.num);
+    const tags=e.tags.map(t=>`<span class="essay-tag">${t}</span>`).join('');
+    return `<button class="essay-card" onclick="enterEssay(${i})">
+      <span class="essay-type ${e.type}">${e.type==='email'?'EMAIL':'ARTICLE'}</span>
+      ${isRead?'<span style="float:right;color:var(--gold-2);font-size:14px;position:relative;z-index:1">✓</span>':''}
+      <div class="essay-topic">${e.topic}</div>
+      <div class="essay-cn">${e.cn}</div>
+      <div class="essay-tags">${tags}</div>
+    </button>`;
+  }).join('');
+  z.innerHTML=`
+    <div class="sec-title">10 Model Essays</div>
+    <div class="essay-list">${cards}</div>
+    <div class="essay-tip">
+      <div class="essay-tip-label">📜 PET 写作两种体裁</div>
+      <strong>Email (Part 1)</strong>：根据简短情境写一封 100 词左右的邮件，回应三个要点。<br>
+      <strong>Article (Part 2)</strong>：为校刊或网站写 100 词左右的文章，需要观点和细节。
+    </div>`;
+}
+
+function enterEssay(i){
+  essayState.idx=i;
+  essayState.memoMode=0;
+  essayState.memoParaIdx=0;
+  if(!progress.essayRead.has(ESSAYS[i].num)){
+    progress.essayRead.add(ESSAYS[i].num);
+    logToday('essay');
+    saveProgress();
+  }
+  sfxFlip();
+  rEssayDetail();
+}
+
+function rEssayDetail(){
+  const z=document.getElementById('essayZone');
+  const e=ESSAYS[essayState.idx];
+  z.innerHTML=`
+    <button class="back-btn" onclick="exitEssay()">← 返回列表</button>
+    <div class="essay-detail">
+      <div class="essay-detail-content">
+        <span class="essay-type ${e.type}">${e.type==='email'?'EMAIL · PART 1':'ARTICLE · PART 2'}</span>
+        <div class="essay-h1" style="margin-top:8px">${e.topic}</div>
+        <div class="essay-h2">${e.cn}</div>
+        <div class="essay-prompt">
+          <div class="essay-prompt-label">📝 Task Prompt</div>
+          ${e.prompt}
+        </div>
+        <div class="essay-body">
+          ${e.body.map(p=>`<p>${p}</p>`).join('')}
+        </div>
+        <div class="action-row" style="margin-top:14px">
+          <button class="btn btn-ghost" onclick="speakFullEssay()">🔊 全文朗读</button>
+          <button class="btn btn-ink" onclick="enterMemo()">开始背诵 →</button>
+        </div>
+        <div class="essay-tip">
+          <div class="essay-tip-label">✍ Writing Tip</div>
+          ${e.tip}
+        </div>
+      </div>
+    </div>`;
+}
+
+function enterMemo(){
+  essayState.memoMode=0;
+  essayState.memoParaIdx=0;
+  rEssayMemo();
+}
+
+function rEssayMemo(){
+  const z=document.getElementById('essayZone');
+  const e=ESSAYS[essayState.idx];
+  const tabs=['逐段背诵','挖空填词','跟读模式'].map((t,i)=>
+    `<button class="memo-tab ${essayState.memoMode===i?'on':''}" onclick="essayState.memoMode=${i};rEssayMemo()">${t}</button>`
+  ).join('');
+  let content='';
+  if(essayState.memoMode===0){
+    content=e.body.map((p,i)=>`<div class="memo-para ${i<=essayState.memoParaIdx?'':'hidden-para'}" id="mp${i}"
+      onclick="revealPara(${i})">${p}</div>`).join('')+
+    `<div class="action-row" style="margin-top:10px">
+      <button class="btn btn-ghost" onclick="essayState.memoParaIdx=0;rEssayMemo()">重置</button>
+      <button class="btn btn-ink" onclick="essayState.memoParaIdx=Math.min(essayState.memoParaIdx+1,${e.body.length-1});rEssayMemo()">下一段 →</button>
+    </div>`;
+  } else if(essayState.memoMode===1){
+    // 挖空高频词
+    const KW=['really','because','however','always','before','soon','again','first','second','lastly',
+      'when','where','what','tomorrow','yesterday','should','would','could','please','wonderful',
+      'amazed','peaceful','exciting','difficult','beautiful','memorable','favourite','probably',
+      'actually','suddenly'];
+    content=e.body.map(p=>{
+      let r=p;
+      KW.forEach(k=>{
+        const rx=new RegExp('\\b'+k+'\\b','gi');
+        r=r.replace(rx,m=>`<span class="blank-word" onclick="this.classList.toggle('shown')">${m}</span>`);
+      });
+      return `<div class="memo-para">${r}</div>`;
+    }).join('')+
+    `<div class="action-row" style="margin-top:10px">
+      <button class="btn btn-ghost" onclick="document.querySelectorAll('.blank-word').forEach(b=>b.classList.remove('shown'))">隐藏全部</button>
+      <button class="btn btn-ink" onclick="document.querySelectorAll('.blank-word').forEach(b=>b.classList.add('shown'))">显示全部</button>
+    </div>`;
+  } else {
+    content=e.body.map((p,i)=>`<div class="memo-para" id="rp${i}"
+      onclick="document.querySelectorAll('.memo-para').forEach(x=>x.style.borderColor='');
+        this.style.borderColor='var(--wine)';speak(${JSON.stringify(p)},null)"
+      style="cursor:pointer">
+      <span style="font-family:'Playfair Display',serif;font-size:11px;color:var(--wine);font-weight:700;margin-right:6px">${i+1}.</span>${p}
+    </div>`).join('')+
+    `<div class="action-row" style="margin-top:10px">
+      <button class="btn btn-ghost" onclick="if(window.speechSynthesis)window.speechSynthesis.cancel()">⏸ 停止</button>
+      <button class="btn btn-ink" onclick="speakFullEssay()">▶ 朗读全文</button>
+    </div>`;
+  }
+  z.innerHTML=`
+    <button class="back-btn" onclick="rEssayDetail()">← 返回原文</button>
+    <div class="essay-detail">
+      <div class="essay-detail-content">
+        <div class="essay-h1">${e.topic}</div>
+        <div class="essay-h2">${e.cn}</div>
+        <div class="memo-tabs">${tabs}</div>
+        ${content}
+      </div>
+    </div>`;
+}
+
+function revealPara(i){
+  essayState.memoParaIdx=Math.max(essayState.memoParaIdx,i);
+  const el=document.getElementById('mp'+i);
+  if(el) el.classList.remove('hidden-para');
+}
+
+function speakFullEssay(){
+  const e=ESSAYS[essayState.idx];
+  const text=e.body.join(' ');
+  speak(text,null);
+}
+
+function exitEssay(){
+  essayState.idx=null;
+  sfxFlip();
+  rEssayList();
+}
+
+/* ============================================================
+   ╔═════════════════════════════════════════════════╗
+   ║                学习报告                           ║
+   ╚═════════════════════════════════════════════════╝
+============================================================ */
+function rReport(){
+  const z=document.getElementById('reportZone');
+  // 计算本周数据
+  const today=new Date();
+  const weekDays=[];
+  for(let i=6;i>=0;i--){
+    const d=new Date(today);d.setDate(d.getDate()-i);
+    const ds=d.toISOString().slice(0,10);
+    const data=progress.history[ds]||{words:0,gram:0,essay:0};
+    const total=data.words+data.gram+data.essay;
+    weekDays.push({date:ds,label:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][d.getDay()],total});
+  }
+  const maxVal=Math.max(...weekDays.map(d=>d.total),5);
+  const weekTotal=weekDays.reduce((s,d)=>s+d.total,0);
+  const activeDays=weekDays.filter(d=>d.total>0).length;
+  const gramAccuracy=progress.gramTotal?Math.round(progress.gramCorrect/progress.gramTotal*100):0;
+
+  // 模块进度
+  const wordPct=Math.round(progress.mastered.size/V.length*100);
+  const totalGramQ=GRAMMAR_TOPICS.reduce((s,t)=>s+(GQ[t.id]||[]).length,0);
+  const gramDone=Object.values(progress.gramAnswered).reduce((s,o)=>s+Object.keys(o).length,0);
+  const gramPct=totalGramQ?Math.round(gramDone/totalGramQ*100):0;
+  const essayPct=Math.round(progress.essayRead.size/ESSAYS.length*100);
+
+  z.innerHTML=`
+    <div class="report-stats">
+      <div class="stat-card">
+        <div class="stat-num">${weekTotal}</div>
+        <div class="stat-label">This Week</div>
+        <div class="stat-sub">${activeDays} 天活跃</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">${progress.streak}</div>
+        <div class="stat-label">Streak Days</div>
+        <div class="stat-sub">${progress.streak>=7?'🔥 一周不断':progress.streak>=3?'坚持中':'刚开始'}</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">${progress.gramCorrect}/${progress.gramTotal||0}</div>
+        <div class="stat-label">Grammar Acc.</div>
+        <div class="stat-sub">${gramAccuracy}% 正确率</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">${progress.mastered.size}</div>
+        <div class="stat-label">Words Known</div>
+        <div class="stat-sub">${V.length} 词总库</div>
+      </div>
+    </div>
+
+    <div class="sec-title">Past 7 Days</div>
+    <div style="background:var(--cream);border:2px solid var(--ink);border-radius:14px;padding:16px;position:relative;margin-bottom:18px">
+      <div style="position:absolute;inset:3px;border:1px solid var(--gold);border-radius:11px;pointer-events:none"></div>
+      <div style="position:relative;z-index:1">
+        ${weekDays.map(d=>`
+          <div class="bar-row">
+            <span class="bar-day">${d.label}</span>
+            <div class="bar-track"><div class="bar-fill" style="width:${d.total/maxVal*100}%"></div></div>
+            <span class="bar-num">${d.total}</span>
+          </div>`).join('')}
+      </div>
+    </div>
+
+    <div class="sec-title">Module Progress</div>
+    <div class="module-card">
+      <div class="module-info">
+        <div class="module-name">📖 Words</div>
+        <div class="module-desc">${progress.mastered.size} / ${V.length} 词已掌握</div>
+        <div class="pb" style="margin-top:8px;margin-bottom:0"><div class="pf" style="width:${wordPct}%"></div></div>
+      </div>
+      <div class="module-num">${wordPct}%</div>
+    </div>
+    <div class="module-card">
+      <div class="module-info">
+        <div class="module-name">✦ Grammar</div>
+        <div class="module-desc">${gramDone} / ${totalGramQ} 题已完成</div>
+        <div class="pb" style="margin-top:8px;margin-bottom:0"><div class="pf" style="width:${gramPct}%"></div></div>
+      </div>
+      <div class="module-num">${gramPct}%</div>
+    </div>
+    <div class="module-card">
+      <div class="module-info">
+        <div class="module-name">✒ Essays</div>
+        <div class="module-desc">${progress.essayRead.size} / ${ESSAYS.length} 篇已学</div>
+        <div class="pb" style="margin-top:8px;margin-bottom:0"><div class="pf" style="width:${essayPct}%"></div></div>
+      </div>
+      <div class="module-num">${essayPct}%</div>
+    </div>
+
+    <div class="essay-tip" style="margin-top:18px">
+      <div class="essay-tip-label">💡 学习建议</div>
+      ${getReportAdvice(weekTotal,gramAccuracy,wordPct)}
+    </div>`;
+}
+
+function getReportAdvice(weekTotal,gramAcc,wordPct){
+  if(weekTotal===0) return '本周还没开始练习。打开"单词卡"花 5 分钟学几个新词，万事开头难。';
+  if(weekTotal<10) return '本周练习量偏少。试着每天固定 10 分钟，比一次学一小时更有效。';
+  if(gramAcc>0&&gramAcc<60) return '语法正确率还有提升空间。建议把做错的主题再做一遍，看错题解析。';
+  if(wordPct<20) return '坚持得不错！可以适当增加单词量，每天目标 20 词。';
+  if(weekTotal>=30) return '本周非常活跃！继续保持，注意均衡发展三个模块。';
+  return '稳步推进中。建议每天单词 + 语法 + 范文都接触一点，三管齐下进步最快。';
+}
+
+/* ============================================================
    启动
 ============================================================ */
 loadSettings();
 loadProgress();
 initF('all');
 rFlash();
+
+
 
 </script>
 </body>
